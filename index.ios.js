@@ -14,35 +14,31 @@ import {
 } from 'react-native';
 
 import Game from './components/Game';
+import ScoreBoard from './components/ScoreBoard'
 
 export default class scorekeepr extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={{ title: 'Game', index: 0 }}
-        renderScene={(route, navigator) =>
-          <Game
-            title={route.title}
-
-            // Function to call when a new scene should be displayed
-            onForward={ () => {
-              const nextIndex = route.index + 1;
-              navigator.push({
-                title: 'ScoreBoard ' + nextIndex,
-                index: nextIndex,
-              });
-            }}
-
-            // Function to call to go back to the previous scene
-            onBack={() => {
-              if (route.index > 0) {
-                navigator.pop();
-              }
-            }}
-          />
+        initialRoute={{ title: 'Game',
+                        index: 0 ,
+                        id: 'Game'
+                      }}
+        renderScene={
+          this.navigatorRenderScene
         }
       />
     )
+  }
+
+  navigatorRenderScene(route,navigator){
+    _navigator = navigator;
+    switch(route.id){
+      case 'Game':
+        return(<Game navigator={navigator} title='First' />)
+      case 'ScoreBoard':
+        return(<ScoreBoard navigator={navigator} title='ScoreBoard' />)
+    }
   }
 }
 

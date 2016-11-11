@@ -5,25 +5,32 @@ import {
   View,
   Slider,
   PixelRatio,
-  TouchableHighlight
+  TouchableHighlight,
+  Navigator
 } from 'react-native';
 
 export default class Game extends Component {
     static get defaultProps() {
       return {
-        title: 'Game'
+        title: 'Game',
+        id: 0,
+        id: 'Game'
           };
         }
+
+
+    onButtonPress(){
+      this.props.navigator.push({
+        id: 'ScoreBoard'
+      })
+    }
 
     render(){
       return(
         <View  style={styles.container}>
                 <Text>Game</Text>
-                <TouchableHighlight onPress={this.props.onForward}>
+                <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
                   <Text>Tap me to load the next scene</Text>
-                </TouchableHighlight>
-                <TouchableHighlight onPress={this.props.onBack}>
-                  <Text>Tap me to go back</Text>
                 </TouchableHighlight>
               </View>
 

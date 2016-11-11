@@ -8,17 +8,18 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-export default class Game extends Component {
+export default class ScoreBoard extends Component {
     static get defaultProps() {
       return {
-        title: 'Game'
+        title: 'ScoreBoard',
+        index: 1
           };
         }
 
     render(){
       return(
         <View  style={styles.container}>
-                <Text>Game</Text>
+                <Text>ScoreBoard</Text>
                 <TouchableHighlight onPress={this.props.onForward}>
                   <Text>Tap me to load the next scene</Text>
                 </TouchableHighlight>

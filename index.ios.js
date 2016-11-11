@@ -9,36 +9,38 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
 
 import Game from './components/Game';
+import ScoreBoard from './components/ScoreBoard'
 
 export default class scorekeepr extends Component {
   render() {
     return (
-      <Game />
-    );
+      <Navigator
+        initialRoute={{ title: 'Game',
+                        index: 0 ,
+                        id: 'Game'
+                      }}
+        renderScene={
+          this.navigatorRenderScene
+        }
+      />
+    )
+  }
+
+  navigatorRenderScene(route,navigator){
+    _navigator = navigator;
+    switch(route.id){
+      case 'Game':
+        return(<Game navigator={navigator} title='First' />)
+      case 'ScoreBoard':
+        return(<ScoreBoard navigator={navigator} title='ScoreBoard' />)
+    }
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('scorekeepr', () => scorekeepr);

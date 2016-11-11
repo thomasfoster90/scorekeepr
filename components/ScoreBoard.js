@@ -9,30 +9,31 @@ import {
   Navigator
 } from 'react-native';
 
-export default class Game extends Component {
+export default class ScoreBoard extends Component {
     static get defaultProps() {
       return {
-        title: 'Game',
-        id: 0,
-        id: 'Game'
+        title: 'ScoreBoard',
+        index: 1,
+        id: 'ScoreBoard'
           };
         }
 
 
-    onButtonPress(){
-      this.props.navigator.push({
-        id: 'ScoreBoard'
-      })
-    }
+      onButtonPress(){
+        this.props.navigator.pop({
+          id: 'Game'
+        })
+      }
 
     render(){
       return(
         <View  style={styles.container}>
-                <Text>Game</Text>
+
+                <Text>ScoreBoard</Text>
                 <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
-                  <Text>Tap me to load the next scene</Text>
+                  <Text>Tap me to load the previous scene</Text>
                 </TouchableHighlight>
-              </View>
+        </View>
 
       )
     }

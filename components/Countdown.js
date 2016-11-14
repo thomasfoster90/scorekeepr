@@ -34,7 +34,7 @@ var CountDown = React.createClass({
           <View>
                 <TouchableHighlight
                     style={[styles.wrapper,this.props.buttonStyle]}
-                    onPress={this._resetTimer.bind(this)}
+                    onPress={this._resetTimer}
                     >
                       <Text>Reset</Text>
                 </TouchableHighlight>
@@ -48,7 +48,7 @@ var CountDown = React.createClass({
         <View>
           <TouchableHighlight
               style={[styles.wrapper,this.props.buttonStyle]}
-              onPress={this._onPress.bind(this)}
+              onPress={this._onPress}
               >
                 <Text>Start</Text>
           </TouchableHighlight>

@@ -17,7 +17,7 @@ export default class GenericPlayer extends Component {
 
     this.state={
       total: 0,
-      text: 'Player 1'
+      text: ''
     }
   }
 
@@ -39,11 +39,16 @@ export default class GenericPlayer extends Component {
     })
   }
 
+  _handleNameChange(text) {
+    this.setState({text})
+  }
+
 
   render() {
+    let playNum = "Player "+this.props.playernumber.toString();
     return (
         <View>
-          <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}} onChangeText={(text) => this.setState({text})} value={this.state.text} />
+          <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}} onChangeText={this._handleNameChange.bind(this)} placeholder={playNum} />
           <TouchableHighlight onPress={this._addOne.bind(this)}><Text>Add 1</Text></TouchableHighlight>
           <TouchableHighlight onPress={this._subtractOne.bind(this)}><Text>Subtract 1</Text></TouchableHighlight>
           <Text>Total:</Text>

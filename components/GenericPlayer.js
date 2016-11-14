@@ -41,7 +41,7 @@ export default class GenericPlayer extends Component {
   render() {
     return (
         <View>
-          <Text>Player {this.props.key}</Text>
+          <Text>Player 1</Text>
           <TouchableHighlight onPress={this._addOne.bind(this)}><Text>Add 1</Text></TouchableHighlight>
           <TouchableHighlight onPress={this._subtractOne.bind(this)}><Text>Subtract 1</Text></TouchableHighlight>
           <Text>Total:</Text>

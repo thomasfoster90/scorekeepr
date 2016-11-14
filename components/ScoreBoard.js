@@ -9,7 +9,10 @@ import {
   Navigator
 } from 'react-native';
 
+import CountDown from './Countdown'
+
 import GenericPlayer from './GenericPlayer'
+
 
 export default class ScoreBoard extends Component {
   constructor(props){
@@ -53,6 +56,7 @@ export default class ScoreBoard extends Component {
                 <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
                   <Text>Tap me to load the previous scene</Text>
                 </TouchableHighlight>
+                <CountDown />
         </View>
 
 

@@ -6,7 +6,8 @@ import {
   Slider,
   PixelRatio,
   TouchableHighlight,
-  Navigator
+  Navigator,
+  ScrollView
 } from 'react-native';
 
 import CountDown from './Countdown'
@@ -41,9 +42,8 @@ export default class ScoreBoard extends Component {
       var playerBlocks = [];
       for(var i=1;i<=this.state.players;i++){
         playerBlocks.push(
-            (<View>
-                <GenericPlayer key={i}/>
-            </View>)
+          <GenericPlayer key={i}/>
+
         );
 
       }
@@ -61,7 +61,9 @@ export default class ScoreBoard extends Component {
                 value={this.state.players}
                 onValueChange={players => this.setState({players})}
               />
+              <ScrollView>
               {this._populatePlayers()}
+              </ScrollView>
               <Text>Number of Players: {this.state.players}</Text>
                 <Text>ScoreBoard</Text>
                 <TouchableHighlight onPress={this.onButtonPress.bind(this)}>

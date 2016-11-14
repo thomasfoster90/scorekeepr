@@ -6,7 +6,8 @@ import {
   Slider,
   PixelRatio,
   TouchableHighlight,
-  Navigator
+  Navigator,
+  TextInput
 } from 'react-native';
 
 
@@ -15,7 +16,8 @@ export default class GenericPlayer extends Component {
     super(props);
 
     this.state={
-      total: 0
+      total: 0,
+      text: 'Player 1'
     }
   }
 
@@ -41,7 +43,7 @@ export default class GenericPlayer extends Component {
   render() {
     return (
         <View>
-          <Text>Player 1</Text>
+          <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}} onChangeText={(text) => this.setState({text})} value={this.state.text} />
           <TouchableHighlight onPress={this._addOne.bind(this)}><Text>Add 1</Text></TouchableHighlight>
           <TouchableHighlight onPress={this._subtractOne.bind(this)}><Text>Subtract 1</Text></TouchableHighlight>
           <Text>Total:</Text>

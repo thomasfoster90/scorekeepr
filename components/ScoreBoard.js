@@ -49,10 +49,10 @@ export default class ScoreBoard extends Component {
                 value={this.state.players}
                 onValueChange={players => this.setState({players})}
               />
-              <Text>Numbr of Player{this.state.players}</Text>
+              <Text>Number of Players: {this.state.players}</Text>
           </View>
             <GenericPlayer />
-                <Text>ScoreBoard</Text>
+
                 <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
                   <Text>Tap me to load the previous scene</Text>
                 </TouchableHighlight>

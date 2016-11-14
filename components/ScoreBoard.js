@@ -37,21 +37,32 @@ export default class ScoreBoard extends Component {
         })
       }
 
+      _populatePlayers() {
+      var playerBlocks = [];
+      for(var i=1;i<=this.state.players;i++){
+        playerBlocks.push(
+            (<View>
+                <GenericPlayer key={i}/>
+            </View>)
+        );
+
+      }
+        return playerBlocks;
+
+    }
 
 
     render(){
       return(
         <View  style={styles.container}>
-          <View>
             <Slider
                 maximumValue={8}
                 step={1}
                 value={this.state.players}
                 onValueChange={players => this.setState({players})}
               />
-              <Text>Numbr of Player{this.state.players}</Text>
-          </View>
-            <GenericPlayer />
+              {this._populatePlayers()}
+              <Text>Number of Players: {this.state.players}</Text>
                 <Text>ScoreBoard</Text>
                 <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
                   <Text>Tap me to load the previous scene</Text>

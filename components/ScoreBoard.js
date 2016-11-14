@@ -42,7 +42,7 @@ export default class ScoreBoard extends Component {
       var playerBlocks = [];
       for(var i=1;i<=this.state.players;i++){
         playerBlocks.push(
-          <GenericPlayer key={i}/>
+          <GenericPlayer playernumber={i}/>
 
         );
 

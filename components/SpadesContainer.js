@@ -12,10 +12,10 @@ import {
 
 import CountDown from './Countdown'
 
-import RummyPlayer from './RummyPlayer'
+import SpadesPlayer from './SpadesPlayer'
 
 
-export default class RummyContainer extends Component {
+export default class SpadesContainer extends Component {
   constructor(props){
     super(props)
 
@@ -25,9 +25,9 @@ export default class RummyContainer extends Component {
   }
     static get defaultProps() {
       return {
-        title: 'RummyContainer',
+        title: 'SpadesContainer',
         index: 1,
-        id: 'RummyContainer'
+        id: 'SpadesContainer'
           };
         }
 
@@ -42,7 +42,7 @@ export default class RummyContainer extends Component {
       var playerBlocks = [];
       for(var i=1;i<=this.state.players;i++){
         playerBlocks.push(
-          <RummyPlayer key={i} playernumber={i}/>
+          <SpadesPlayer key={i} playernumber={i}/>
         );
 
       }
@@ -54,6 +54,12 @@ export default class RummyContainer extends Component {
     render(){
       return(
         <View  style={styles.container}>
+          <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
+            <Text>HOME</Text>
+          </TouchableHighlight>
+          <TouchableHighlight>
+            <Text>RESET</Text>
+          </TouchableHighlight>
             <Slider
                 maximumValue={8}
                 step={1}
@@ -65,9 +71,6 @@ export default class RummyContainer extends Component {
               </ScrollView>
               <Text>Number of Players: {this.state.players}</Text>
                 <Text>Rummy</Text>
-                <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
-                  <Text>Tap me to load the previous scene</Text>
-                </TouchableHighlight>
                 <CountDown />
         </View>
 

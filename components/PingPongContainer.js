@@ -10,7 +10,6 @@ import {
   ScrollView
 } from 'react-native';
 
-import CountDown from './Countdown'
 
 import PingPongPlayer from './PingPongPlayer'
 
@@ -20,7 +19,7 @@ export default class PingPongContainer extends Component {
     super(props)
 
     this.state={
-      players:1
+      players:2
     }
   }
     static get defaultProps() {
@@ -54,21 +53,18 @@ export default class PingPongContainer extends Component {
     render(){
       return(
         <View  style={styles.container}>
-            <Slider
-                maximumValue={8}
-                step={1}
-                value={this.state.players}
-                onValueChange={players => this.setState({players})}
-              />
+          <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
+            <Text>HOME</Text>
+          </TouchableHighlight>
+          <TouchableHighlight>
+            <Text>RESET</Text>
+          </TouchableHighlight>
               <ScrollView>
               {this._populatePlayers()}
               </ScrollView>
               <Text>Number of Players: {this.state.players}</Text>
                 <Text>Ping Pong</Text>
-                <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
-                  <Text>Tap me to load the previous scene</Text>
-                </TouchableHighlight>
-                <CountDown />
+
         </View>
 
 

@@ -7,11 +7,11 @@ import {
   PixelRatio,
   TouchableHighlight,
   Navigator,
-  ScrollView
+  ScrollView,
+  TextInput
 } from 'react-native';
 
 import CountDown from './Countdown'
-
 import GenericPlayer from './GenericPlayer'
 
 
@@ -20,7 +20,9 @@ export default class GenericContainer extends Component {
     super(props)
 
     this.state={
-      players:1
+      players:1,
+      total: 0,
+      winner: 0
     }
   }
     static get defaultProps() {
@@ -31,6 +33,9 @@ export default class GenericContainer extends Component {
           };
         }
 
+        _handleNameChange(winner) {
+          this.setState({winner})
+        }
 
       onButtonPress(){
         this.props.navigator.pop({
@@ -42,14 +47,13 @@ export default class GenericContainer extends Component {
       var playerBlocks = [];
       for(var i=1;i<=this.state.players;i++){
         playerBlocks.push(
-          <GenericPlayer  key={i} playernumber={i}/>
+          <GenericPlayer winScore={this.state.winner} key={i} playernumber={i}/>
         );
 
       }
         return playerBlocks;
 
     }
-
 
     render(){
       return(
@@ -75,6 +79,7 @@ export default class GenericContainer extends Component {
                   <Text>Tap me to load the previous scene</Text>
                 </TouchableHighlight>
                 <CountDown />
+              <TextInput style={{height: 20, width: 100, borderColor: 'gray', borderWidth: 1, fontSize: 12}} onChangeText={this._handleNameChange.bind(this)} placeholder={'Winning score'} />
         </View>
 
 

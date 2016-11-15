@@ -10,6 +10,7 @@ import {
   TextInput
 } from 'react-native';
 
+import GenericContainer from './GenericContainer'
 
 export default class GenericPlayer extends Component {
   constructor(props){
@@ -24,10 +25,15 @@ export default class GenericPlayer extends Component {
   _addOne(){
     console.log('add');
     let newTotal = this.state.total + 1
+    let winner = this.props.winScore
     console.log(newTotal);
+    console.log(winner);
     this.setState({
       total: newTotal
     })
+    if(newTotal === +winner){
+      alert('Winner')
+    }
   }
 
   _subtractOne(){

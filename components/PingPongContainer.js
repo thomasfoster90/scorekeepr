@@ -7,7 +7,8 @@ import {
   PixelRatio,
   TouchableHighlight,
   Navigator,
-  ScrollView
+  ScrollView,
+  TextInput
 } from 'react-native';
 
 
@@ -19,7 +20,8 @@ export default class PingPongContainer extends Component {
     super(props)
 
     this.state={
-      players:2
+      players:2,
+      winner: 0
     }
   }
     static get defaultProps() {
@@ -29,6 +31,15 @@ export default class PingPongContainer extends Component {
         id: 'PingPongContainer'
           };
         }
+
+      onButtonReset(){
+
+      }
+
+
+        _handleNameChange(winner) {
+        this.setState({winner})
+      }
 
 
       onButtonPress(){
@@ -41,7 +52,7 @@ export default class PingPongContainer extends Component {
       var playerBlocks = [];
       for(var i=1;i<=this.state.players;i++){
         playerBlocks.push(
-          <PingPongPlayer key={i} playernumber={i}/>
+          <PingPongPlayer  winScore={this.state.winner} key={i} playernumber={i}/>
         );
 
       }
@@ -52,11 +63,11 @@ export default class PingPongContainer extends Component {
 
     render(){
       return(
-        <View  style={styles.container}>
+        <View style={styles.container}>
           <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
             <Text>HOME</Text>
           </TouchableHighlight>
-          <TouchableHighlight>
+          <TouchableHighlight onPress={this.onButtonReset.bind(this)}>
             <Text>RESET</Text>
           </TouchableHighlight>
               <ScrollView>
@@ -64,7 +75,7 @@ export default class PingPongContainer extends Component {
               </ScrollView>
               <Text>Number of Players: {this.state.players}</Text>
                 <Text>Ping Pong</Text>
-
+          <TextInput style={{height: 20, width: 100, borderColor: 'gray', borderWidth: 1, fontSize: 12}} onChangeText={this._handleNameChange.bind(this)} placeholder={'Winning score'} />
         </View>
 
 

@@ -15,7 +15,7 @@ import CountDown from './Countdown'
 import GenericPlayer from './GenericPlayer'
 
 
-export default class ScoreBoard extends Component {
+export default class GenericContainer extends Component {
   constructor(props){
     super(props)
 
@@ -25,9 +25,9 @@ export default class ScoreBoard extends Component {
   }
     static get defaultProps() {
       return {
-        title: 'ScoreBoard',
+        title: 'GenericContainer',
         index: 1,
-        id: 'ScoreBoard'
+        id: 'GenericContainer'
           };
         }
 
@@ -42,8 +42,7 @@ export default class ScoreBoard extends Component {
       var playerBlocks = [];
       for(var i=1;i<=this.state.players;i++){
         playerBlocks.push(
-          <GenericPlayer key={i}/>
-
+          <GenericPlayer key={i} playernumber={i}/>
         );
 
       }
@@ -65,7 +64,7 @@ export default class ScoreBoard extends Component {
               {this._populatePlayers()}
               </ScrollView>
               <Text>Number of Players: {this.state.players}</Text>
-                <Text>ScoreBoard</Text>
+                <Text>Generic Container</Text>
                 <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
                   <Text>Tap me to load the previous scene</Text>
                 </TouchableHighlight>

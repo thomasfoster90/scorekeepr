@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 
-export default class GenericPlayer extends Component {
+export default class RummyPlayer extends Component {
   constructor(props){
     super(props);
 

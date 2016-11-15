@@ -9,28 +9,44 @@ import {
   Navigator
 } from 'react-native';
 
-export default class Game extends Component {
+export default class Home extends Component {
     static get defaultProps() {
       return {
-        title: 'Game',
-        id: 0,
-        id: 'Game'
+        title: 'Home',
+        index: 0,
+        id: 'Home'
           };
         }
 
 
     onButtonPress(){
       this.props.navigator.push({
-        id: 'ScoreBoard'
+        id: 'GenericContainer'
+      })
+    }
+    onButtonPressPing(){
+      this.props.navigator.push({
+        id: 'PingPongContainer'
+      })
+    }
+    onButtonPressRummy(){
+      this.props.navigator.push({
+        id: 'RummyContainer'
       })
     }
 
     render(){
       return(
         <View  style={styles.container}>
-                <Text>Game</Text>
+                <Text>Home</Text>
                 <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
-                  <Text>Tap me to load the next scene</Text>
+                  <Text>BASIC</Text>
+                </TouchableHighlight>
+                <TouchableHighlight onPress={this.onButtonPressPing.bind(this)}>
+                  <Text>PING PONG</Text>
+                </TouchableHighlight>
+                <TouchableHighlight onPress={this.onButtonPressRummy.bind(this)}>
+                  <Text>RUMMY</Text>
                 </TouchableHighlight>
               </View>
 

@@ -16,7 +16,7 @@ import {
 import Home from './components/Home';
 import GenericContainer from './components/GenericContainer'
 import PingPongContainer from './components/PingPongContainer'
-import RummyContainer from './components/RummyContainer'
+import SpadesContainer from './components/SpadesContainer'
 
 export default class scorekeepr extends Component {
   render() {
@@ -44,8 +44,8 @@ export default class scorekeepr extends Component {
          case 'PingPongContainer':
            return(<PingPongContainer navigator={navigator} title='PingPongContainer'
             />)
-            case 'RummyContainer':
-              return(<RummyContainer navigator={navigator} title='RummyContainer'
+            case 'SpadesContainer':
+              return(<SpadesContainer navigator={navigator} title='SpadesContainer'
                />)
     }
   }

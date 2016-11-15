@@ -42,7 +42,7 @@ export default class GenericContainer extends Component {
       var playerBlocks = [];
       for(var i=1;i<=this.state.players;i++){
         playerBlocks.push(
-          <GenericPlayer key={i} playernumber={i}/>
+          <GenericPlayer  key={i} playernumber={i}/>
         );
 
       }
@@ -54,6 +54,12 @@ export default class GenericContainer extends Component {
     render(){
       return(
         <View  style={styles.container}>
+          <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
+            <Text>HOME</Text>
+          </TouchableHighlight>
+          <TouchableHighlight >
+            <Text>RESET</Text>
+          </TouchableHighlight>
             <Slider
                 maximumValue={8}
                 step={1}

@@ -31,7 +31,7 @@ export default class Home extends Component {
     }
     onButtonPressRummy(){
       this.props.navigator.push({
-        id: 'RummyContainer'
+        id: 'SpadesContainer'
       })
     }
 
@@ -46,7 +46,7 @@ export default class Home extends Component {
                   <Text>PING PONG</Text>
                 </TouchableHighlight>
                 <TouchableHighlight onPress={this.onButtonPressRummy.bind(this)}>
-                  <Text>RUMMY</Text>
+                  <Text>SPADES</Text>
                 </TouchableHighlight>
               </View>
 

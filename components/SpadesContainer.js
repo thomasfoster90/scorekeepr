@@ -40,7 +40,7 @@ export default class SpadesContainer extends Component {
 
       _populatePlayers() {
       var playerBlocks = [];
-      for(var i=1;i<=this.state.players;i++){
+      for(var i=1;i<=2;i++){
         playerBlocks.push(
           <SpadesPlayer key={i} playernumber={i}/>
         );
@@ -60,18 +60,11 @@ export default class SpadesContainer extends Component {
           <TouchableHighlight>
             <Text>RESET</Text>
           </TouchableHighlight>
-            <Slider
-                maximumValue={8}
-                step={1}
-                value={this.state.players}
-                onValueChange={players => this.setState({players})}
-              />
               <ScrollView>
               {this._populatePlayers()}
               </ScrollView>
-              <Text>Number of Players: {this.state.players}</Text>
-                <Text>Rummy</Text>
-                <CountDown />
+                <Text>Spades</Text>
+
         </View>
 
 

@@ -21,7 +21,9 @@ export default class PingPongPlayer extends Component {
     }
   }
 
-  _addOne(){
+
+
+  _addOne(total){
     console.log('add');
     let newTotal = this.state.total + 1
     let winner = this.props.winScore

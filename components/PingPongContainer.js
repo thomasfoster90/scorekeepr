@@ -19,6 +19,8 @@ export default class PingPongContainer extends Component {
   constructor(props){
     super(props)
 
+
+
     this.state={
       players:2,
       winner: 0
@@ -31,11 +33,6 @@ export default class PingPongContainer extends Component {
         id: 'PingPongContainer'
           };
         }
-
-      onButtonReset(){
-
-      }
-
 
         _handleNameChange(winner) {
         this.setState({winner})
@@ -52,7 +49,7 @@ export default class PingPongContainer extends Component {
       var playerBlocks = [];
       for(var i=1;i<=this.state.players;i++){
         playerBlocks.push(
-          <PingPongPlayer  winScore={this.state.winner} key={i} playernumber={i}/>
+          <PingPongPlayer  onButtonReset={this.onButtonReset} winScore={this.state.winner} key={i} playernumber={i}/>
         );
 
       }
@@ -67,7 +64,7 @@ export default class PingPongContainer extends Component {
           <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
             <Text>HOME</Text>
           </TouchableHighlight>
-          <TouchableHighlight onPress={this.onButtonReset.bind(this)}>
+          <TouchableHighlight>
             <Text>RESET</Text>
           </TouchableHighlight>
               <ScrollView>

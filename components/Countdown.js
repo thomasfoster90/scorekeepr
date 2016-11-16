@@ -85,6 +85,8 @@ var CountDown = React.createClass({
       this.setState({time: time});
       if (time > 0) {
         this.setTimeout(timer, 1000);
+      } else if (this.state.time === 0) {
+        alert('TIMES UP')
       } else {
         this.setState({disabled: false});
         this.setState({time: this.props.time ? this.props.time : 60});

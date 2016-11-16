@@ -22,6 +22,13 @@ export default class GenericPlayer extends Component {
     }
   }
 
+  _resetButton(){
+    this.setState({
+      total: 0,
+      text: ''
+    })
+  }
+
   _addOne(){
     console.log('add');
     let newTotal = this.state.total + 1
@@ -40,9 +47,14 @@ export default class GenericPlayer extends Component {
     console.log('subtract');
     let newTotal = this.state.total - 1
     console.log(newTotal);
-    this.setState({
-      total: newTotal
-    })
+    if (this.state.total === 0) {
+      alert('No Points to Subtract')
+    } else {
+      this.setState({
+        total: newTotal
+      })
+    }
+
   }
 
   _handleNameChange(text) {
@@ -59,6 +71,9 @@ export default class GenericPlayer extends Component {
           <TouchableHighlight onPress={this._subtractOne.bind(this)}><Text>Subtract 1</Text></TouchableHighlight>
           <Text>Total:</Text>
           <Text>{this.state.total}</Text>
+          <TouchableHighlight onPress={this._resetButton.bind(this)}>
+            <Text>RESET</Text>
+          </TouchableHighlight>
         </View>
     );
   }

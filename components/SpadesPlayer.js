@@ -3,15 +3,12 @@ import {
   StyleSheet,
   Text,
   View,
-  Slider,
-  PixelRatio,
   TouchableHighlight,
-  Navigator,
   TextInput,
-  PickerIOS,
-  PickerItemIOS
-} from 'react-native';
+  PickerIOS
+  } from 'react-native';
 
+  const PickerItemIOS = PickerIOS.Item;
 
 class SpadesPlayer extends Component {
   constructor(props){
@@ -24,11 +21,16 @@ class SpadesPlayer extends Component {
       p2Bid: "1",
       p1Tricks: "1",
       p2Tricks: "1",
-      sandbags:''
+      sandbags:'0'
     }
   }
 
+  _handleNameChange(teamName) {
+    this.setState({teamName})
+  }
+
   _calculateTotal() {
+    console.log('_calculateTotal');
     if ((this.state.p1Bid === "blindnil") || (this.state.p2Bid === "blindnil") ) {
       this._blindNilScore()
     } else if ((this.state.p1Bid === "nil") || (this.state.p2Bid === "nil")) {
@@ -36,9 +38,12 @@ class SpadesPlayer extends Component {
     } else {
       this._normalScore()
     }
+    // this._sandbagCheck()
   }
 
+
   _normalScore() {
+    console.log('_normalScore');
     let p1B = +this.state.p1Bid;
     let p1T = +this.state.p1Tricks;
     let p2B = +this.state.p2Bid;
@@ -48,20 +53,13 @@ class SpadesPlayer extends Component {
 
     if ((p1B + p2B) <= (p1T + p2T)) {
       var amtToAdd = (p1B+p2B)*10
-      this.setState({
-        sandbags: sandbags+((p1T + p2T) - (p1B+p2B))
-      })
-      console.log(this.state.sandbags);
+      sandbags+= ((p1T + p2T) - (p1B+p2B))
+
     } else if ((p1B + p2B) > (p1T + p2T)) {
       var amtToAdd = (p1B+p2B) *(-10)
     }
-    this.setState({
-      total: total+amtToAdd
-    })
-  }
-
-  _handleNameChange(teamName) {
-    this.setState({teamName})
+    total+=amtToAdd;
+    this.setState({ total, sandbags })
   }
 
   _blindNilScore() {
@@ -76,12 +74,11 @@ class SpadesPlayer extends Component {
       if (p1B === 'blindnil') {
         //get p2's score
         if (p2T >= p2B)  {
-          var amtToAdd = p2B*10;
-          this.setState({
-            sandbags: (sandbags) + (p2T-p2B)
-          })
+          var amtToAdd = (+p2B)*10;
+          sandbags += (+p2T)-(+p2B)
+
         } else {
-           var amtToAdd = p2B*(-10);
+           var amtToAdd = (+p2B)*(-10);
          }
          // if p1 got blindnil
         if (p1T === 'blindnil') {
@@ -89,18 +86,17 @@ class SpadesPlayer extends Component {
         } else {
           //if p1 didn't get blindnil
           amtToAdd -= 200
-          this.setState({
-            sandbags: (sandbags) + (+p1T)
-          })
+          sandbags += (+p1T)
         }
-      }
+      // total += amtToAdd
+      // this.setState({ total, sandbags })
+    }
       // else p2 bid blind nil, so get p1's score
         else if (p2B === 'blindnil') {
           if (p1T >= p1B)  {
           var amtToAdd = p1B*10;
-          this.setState({
-            sandbags: (sandbags) + (p1T-p1B)
-          })
+          sandbags += (p1T-p1B)
+
         } else {
            var amtToAdd = p1B*(-10);
          }
@@ -110,15 +106,12 @@ class SpadesPlayer extends Component {
         } else {
           //if p1 didn't get blindnil
           amtToAdd -= 200
-        this.setState({
-          sandbags: (sandbags) + (+p1T)
-        })
+          sandbags += (+p1T)
       }
+
     }
-    this.setState({
-      total: total+amtToAdd
-    })
-    console.log('blind  nil score');
+    total+=amtToAdd
+    this.setState({ total, sandbags })
   }
 
   _nilScore() {
@@ -134,9 +127,8 @@ class SpadesPlayer extends Component {
         //get p2's score
         if (p2T >= p2B)  {
           var amtToAdd = p2B*10;
-          this.setState({
-            sandbags: (sandbags) + (p2T-p2B)
-          })
+          sandbags += (+p2T)-(+p2B)
+
         } else {
            var amtToAdd = p2B*(-10);
          }
@@ -146,18 +138,15 @@ class SpadesPlayer extends Component {
         } else {
           //if p1 didn't get nil
           amtToAdd -= 100
-          this.setState({
-            sandbags: (sandbags) + (+p1T)
-          })
+          sandbags += +p1T
         }
       }
       // else p2 bid nil, so get p1's score
         else if (p2B === 'nil') {
           if (p1T >= p1B)  {
           var amtToAdd = p1B*10;
-          this.setState({
-            sandbags: (sandbags) + (p1T-p1B)
-          })
+          sandbags += (+p1T) - (+p1B)
+
         } else {
            var amtToAdd = p1B*(-10);
          }
@@ -167,17 +156,22 @@ class SpadesPlayer extends Component {
         } else {
           //if p1 didn't get nil
           amtToAdd -= 100
-        this.setState({
-          sandbags: (sandbags) + (+p1T)
-        })
+          sandbags += (+p1T)
       }
     }
-    this.setState({
-      total: total+amtToAdd
-    })
-    console.log('blind  nil score');
+    this.setState({ total, sandbags })
+    this._sandbagCheck()
   }
 
+  _sandbagCheck() {
+    console.log('_sandbagCheck');
+
+    if (+this.state.sandbags >= 10) {
+      let total = +this.state.total - 100
+      let sandbags = +this.state.sandbags - 10
+      this.setState({ total, sandbags })
+  }
+}
   render() {
     return (
         <View style={styles.playerContainer}>
@@ -276,7 +270,7 @@ class SpadesPlayer extends Component {
             <View style={styles.total}>
               <Text>Total:</Text>
               <Text>{this.state.total}</Text>
-              <Text>Sandbags: {this.state.sandbags}</Text>
+              <Text onValueChange={this._sandbagCheck()}>Sandbags: {this.state.sandbags}</Text>
             </View>
           </View>
 

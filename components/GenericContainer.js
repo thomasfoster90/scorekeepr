@@ -65,7 +65,8 @@ export default class GenericContainer extends Component {
             <Text>RESET</Text>
           </TouchableHighlight>
             <Slider
-                maximumValue={8}
+                maximumValue={6}
+                minimumValue={1}
                 step={1}
                 value={this.state.players}
                 onValueChange={players => this.setState({players})}
@@ -74,12 +75,8 @@ export default class GenericContainer extends Component {
               {this._populatePlayers()}
               </ScrollView>
               <Text>Number of Players: {this.state.players}</Text>
-                <Text>Generic Container</Text>
-                <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
-                  <Text>Tap me to load the previous scene</Text>
-                </TouchableHighlight>
                 <CountDown />
-              <TextInput style={{height: 20, width: 100, borderColor: 'gray', borderWidth: 1, fontSize: 12}} onChangeText={this._handleNameChange.bind(this)} placeholder={'Winning score'} />
+              <TextInput style={{height: 20, width: 110, borderColor: 'gray', borderWidth: 1, fontSize: 12}} onChangeText={this._handleNameChange.bind(this)} placeholder={'Set Winning Score'} />
         </View>
 
 

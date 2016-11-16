@@ -34,7 +34,11 @@ class SpadesPlayer extends Component {
     } else if ((this.state.p1Bid === "nil") || (this.state.p2Bid === "nil")) {
       this._nilScore()
     } else {
+      this._normalScore()
+    }
+  }
 
+  _normalScore() {
     let p1B = +this.state.p1Bid;
     let p1T = +this.state.p1Tricks;
     let p2B = +this.state.p2Bid;
@@ -55,7 +59,7 @@ class SpadesPlayer extends Component {
       total: total+amtToAdd
     })
   }
-}
+
   _handleNameChange(teamName) {
     this.setState({teamName})
   }
@@ -177,7 +181,13 @@ class SpadesPlayer extends Component {
   render() {
     return (
         <View style={styles.playerContainer}>
-          <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}} onChangeText={this._handleNameChange.bind(this)} placeholder="Team 1" />
+          <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}} onChangeText={this._handleNameChange.bind(this)} placeholder="Team Name" />
+          <View>
+            <Text>Bids Tricks</Text>
+          </View>
+          <View>
+            <Text>P1 P2 P1 P2</Text>
+          </View>
           <View style={styles.pickerContainer}>
             <PickerIOS
               selectedValue={this.state.p1Bid}
@@ -201,7 +211,7 @@ class SpadesPlayer extends Component {
             <PickerIOS
               selectedValue={this.state.p2Bid}
               onValueChange={(p2Bid) => this.setState({p2Bid})}
-              style={styles.picker} mode="dropdown">
+              style={styles.picker} itemStyle={styles.pickerItems}>
               <PickerItemIOS label="BN" value="blindnil" />
               <PickerItemIOS label="N" value="nil" />
               <PickerItemIOS label="1" value="1" />
@@ -221,7 +231,7 @@ class SpadesPlayer extends Component {
             <PickerIOS
               selectedValue={this.state.p1Tricks}
               onValueChange={(p1Tricks) => this.setState({p1Tricks})}
-              style={styles.picker} mode="dropdown">
+              style={styles.picker} itemStyle={styles.pickerItems}>
               <PickerItemIOS label="BN" value="blindnil" />
               <PickerItemIOS label="N" value="nil" />
               <PickerItemIOS label="1" value="1" />
@@ -241,7 +251,7 @@ class SpadesPlayer extends Component {
             <PickerIOS
               selectedValue={this.state.p2Tricks}
               onValueChange={(p2Tricks) => this.setState({p2Tricks})}
-              style={styles.picker} mode="dropdown">
+              style={styles.picker} itemStyle={styles.pickerItems}>
               <PickerItemIOS label="BN" value="blindnil" />
               <PickerItemIOS label="N" value="nil" />
               <PickerItemIOS label="1" value="1" />

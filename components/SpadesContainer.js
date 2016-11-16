@@ -19,9 +19,6 @@ export default class SpadesContainer extends Component {
   constructor(props){
     super(props)
 
-    this.state={
-      players:1
-    }
   }
     static get defaultProps() {
       return {

@@ -52,11 +52,11 @@ class SpadesPlayer extends Component {
     let sandbags = +this.state.sandbags;
 
     if ((p1B + p2B) <= (p1T + p2T)) {
-      var amtToAdd = (p1B+p2B)*10
+      var amtToAdd = (p1B+p2B)
       sandbags+= ((p1T + p2T) - (p1B+p2B))
 
     } else if ((p1B + p2B) > (p1T + p2T)) {
-      var amtToAdd = (p1B+p2B) *(-10)
+      var amtToAdd = (p1B+p2B) *(-1)
     }
     total+=amtToAdd;
     this.setState({ total, sandbags })
@@ -74,18 +74,18 @@ class SpadesPlayer extends Component {
       if (p1B === 'blindnil') {
         //get p2's score
         if (p2T >= p2B)  {
-          var amtToAdd = (+p2B)*10;
+          var amtToAdd = (+p2B);
           sandbags += (+p2T)-(+p2B)
 
         } else {
-           var amtToAdd = (+p2B)*(-10);
+           var amtToAdd = (+p2B)*(-1);
          }
          // if p1 got blindnil
         if (p1T === 'blindnil') {
-          amtToAdd += 200
+          amtToAdd += 20
         } else {
           //if p1 didn't get blindnil
-          amtToAdd -= 200
+          amtToAdd -= 20
           sandbags += (+p1T)
         }
       // total += amtToAdd
@@ -94,18 +94,18 @@ class SpadesPlayer extends Component {
       // else p2 bid blind nil, so get p1's score
         else if (p2B === 'blindnil') {
           if (p1T >= p1B)  {
-          var amtToAdd = p1B*10;
+          var amtToAdd = p1B;
           sandbags += (p1T-p1B)
 
         } else {
-           var amtToAdd = p1B*(-10);
+           var amtToAdd = p1B*(-1);
          }
          // if p2 got blindnil
         if (p2T === 'blindnil') {
-          amtToAdd += 200
+          amtToAdd += 20
         } else {
           //if p1 didn't get blindnil
-          amtToAdd -= 200
+          amtToAdd -= 20
           sandbags += (+p1T)
       }
 
@@ -126,36 +126,36 @@ class SpadesPlayer extends Component {
       if (p1B === 'nil') {
         //get p2's score
         if (p2T >= p2B)  {
-          var amtToAdd = p2B*10;
+          var amtToAdd = p2B;
           sandbags += (+p2T)-(+p2B)
 
         } else {
-           var amtToAdd = p2B*(-10);
+           var amtToAdd = p2B*(-1);
          }
          // if p1 got nil
         if (p1T === 'nil') {
-          amtToAdd += 100
+          amtToAdd += 10
         } else {
           //if p1 didn't get nil
-          amtToAdd -= 100
+          amtToAdd -= 10
           sandbags += +p1T
         }
       }
       // else p2 bid nil, so get p1's score
         else if (p2B === 'nil') {
           if (p1T >= p1B)  {
-          var amtToAdd = p1B*10;
+          var amtToAdd = p1B;
           sandbags += (+p1T) - (+p1B)
 
         } else {
-           var amtToAdd = p1B*(-10);
+           var amtToAdd = p1B*(-1);
          }
          // if p2 got nil
         if (p2T === 'nil') {
-          amtToAdd += 100
+          amtToAdd += 10
         } else {
           //if p1 didn't get nil
-          amtToAdd -= 100
+          amtToAdd -= 10
           sandbags += (+p1T)
       }
     }
@@ -167,7 +167,7 @@ class SpadesPlayer extends Component {
     console.log('_sandbagCheck');
 
     if (+this.state.sandbags >= 10) {
-      let total = +this.state.total - 100
+      let total = +this.state.total - 10
       let sandbags = +this.state.sandbags - 10
       this.setState({ total, sandbags })
   }
@@ -177,10 +177,14 @@ class SpadesPlayer extends Component {
         <View style={styles.playerContainer}>
           <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}} onChangeText={this._handleNameChange.bind(this)} placeholder="Team Name" />
           <View>
-            <Text>Bids Tricks</Text>
+            <Text>Bids</Text>
+            <Text>Tricks</Text>
           </View>
           <View>
-            <Text>P1 P2 P1 P2</Text>
+            <Text>P1</Text>
+            <Text>P2</Text>
+            <Text>P1</Text>
+            <Text>P2</Text>
           </View>
           <View style={styles.pickerContainer}>
             <PickerIOS
@@ -269,7 +273,7 @@ class SpadesPlayer extends Component {
             </TouchableHighlight>
             <View style={styles.total}>
               <Text>Total:</Text>
-              <Text>{this.state.total}</Text>
+              <Text>{this.state.total}{this.state.sandbags}</Text>
               <Text onValueChange={this._sandbagCheck()}>Sandbags: {this.state.sandbags}</Text>
             </View>
           </View>
@@ -295,6 +299,14 @@ const styles = StyleSheet.create({
   },
   pickerItems: {
     fontSize: 15
+  },
+  bidsTricks: {
+    justifyContent: 'space-around',
+    fontSize: 20,
+    backgroundColor: 'red',
+  },
+  p1p2: {
+    fontSize: 15,
   }
 })
 

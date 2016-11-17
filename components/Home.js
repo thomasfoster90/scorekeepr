@@ -6,7 +6,8 @@ import {
   Slider,
   PixelRatio,
   TouchableHighlight,
-  Navigator
+  Navigator,
+  Image
 } from 'react-native';
 
 export default class Home extends Component {
@@ -38,11 +39,15 @@ export default class Home extends Component {
     render(){
       return(
         <View  style={styles.container}>
-          <View style={styles.firstContainer}>
+          <View style={styles.logoContainer}>
+            <Image source={require('./public/scorekeeperlight.png')} style={styles.logo}>
+              {/* <View style={styles.firstContainer}>
+              </View>
+              <View style={styles.secondContainer}>
+              </View> */}
+            </Image>
           </View>
-          <View style={styles.secondContainer}>
-            <Text style={styles.titles}>LOGO</Text>
-          </View>
+
           <View style={styles.thirdContainer}>
             <TouchableHighlight onPress={this.onButtonPressSpades.bind(this)}>
               <Text style={styles.titles}>SPADES</Text>
@@ -83,6 +88,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  logoContainer: {
+    flex:2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "#65C3BA"
+  },
+  logo: {
+    height: 250,
+    width: 250,
+  },
   thirdContainer: {
     flex:1,
     backgroundColor: "#54B2A9",
@@ -103,7 +118,7 @@ const styles = StyleSheet.create({
   },
   titles: {
     fontFamily: 'Quicksand',
-    fontSize: 30,
+    fontSize: 20,
     color: 'white',
 
   }

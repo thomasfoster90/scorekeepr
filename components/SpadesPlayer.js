@@ -5,10 +5,10 @@ import {
   View,
   TouchableHighlight,
   TextInput,
-  PickerIOS
   } from 'react-native';
 
-  const PickerItemIOS = PickerIOS.Item;
+import PickerIOS from "./PickerIOS"
+const PickerItemIOS = PickerIOS.Item;
 
 class SpadesPlayer extends Component {
   constructor(props){
@@ -184,110 +184,138 @@ class SpadesPlayer extends Component {
   render() {
     return (
         <View style={styles.playerContainer}>
-          <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}} onChangeText={this._handleNameChange.bind(this)} placeholder="Team Name" />
-          <View>
-            <Text>Bids</Text>
-            <Text>Tricks</Text>
-          </View>
-          <View>
-            <Text>P1</Text>
-            <Text>P2</Text>
-            <Text>P1</Text>
-            <Text>P2</Text>
-          </View>
-          <View style={styles.pickerContainer}>
-            <PickerIOS
-              selectedValue={this.state.p1Bid}
-              onValueChange={(p1Bid) => this.setState({p1Bid})} style={styles.picker} itemStyle={styles.pickerItems}>
-              <PickerItemIOS label="BN" value="blindnil" />
-              <PickerItemIOS label="N" value="nil" />
-              <PickerItemIOS label="1" value="1" />
-              <PickerItemIOS label="2" value="2" />
-              <PickerItemIOS label="3" value="3" />
-              <PickerItemIOS label="4" value="4" />
-              <PickerItemIOS label="5" value="5" />
-              <PickerItemIOS label="6" value="6" />
-              <PickerItemIOS label="7" value="7" />
-              <PickerItemIOS label="8" value="8" />
-              <PickerItemIOS label="9" value="9" />
-              <PickerItemIOS label="10" value="10" />
-              <PickerItemIOS label="11" value="11" />
-              <PickerItemIOS label="12" value="12" />
-              <PickerItemIOS label="13" value="13" />
-            </PickerIOS>
-            <PickerIOS
-              selectedValue={this.state.p2Bid}
-              onValueChange={(p2Bid) => this.setState({p2Bid})}
-              style={styles.picker} itemStyle={styles.pickerItems}>
-              <PickerItemIOS label="BN" value="blindnil" />
-              <PickerItemIOS label="N" value="nil" />
-              <PickerItemIOS label="1" value="1" />
-              <PickerItemIOS label="2" value="2" />
-              <PickerItemIOS label="3" value="3" />
-              <PickerItemIOS label="4" value="4" />
-              <PickerItemIOS label="5" value="5" />
-              <PickerItemIOS label="6" value="6" />
-              <PickerItemIOS label="7" value="7" />
-              <PickerItemIOS label="8" value="8" />
-              <PickerItemIOS label="9" value="9" />
-              <PickerItemIOS label="10" value="10" />
-              <PickerItemIOS label="11" value="11" />
-              <PickerItemIOS label="12" value="12" />
-              <PickerItemIOS label="13" value="13" />
-            </PickerIOS>
-            <PickerIOS
-              selectedValue={this.state.p1Tricks}
-              onValueChange={(p1Tricks) => this.setState({p1Tricks})}
-              style={styles.picker} itemStyle={styles.pickerItems}>
-              <PickerItemIOS label="BN" value="blindnil" />
-              <PickerItemIOS label="N" value="nil" />
-              <PickerItemIOS label="1" value="1" />
-              <PickerItemIOS label="2" value="2" />
-              <PickerItemIOS label="3" value="3" />
-              <PickerItemIOS label="4" value="4" />
-              <PickerItemIOS label="5" value="5" />
-              <PickerItemIOS label="6" value="6" />
-              <PickerItemIOS label="7" value="7" />
-              <PickerItemIOS label="8" value="8" />
-              <PickerItemIOS label="9" value="9" />
-              <PickerItemIOS label="10" value="10" />
-              <PickerItemIOS label="11" value="11" />
-              <PickerItemIOS label="12" value="12" />
-              <PickerItemIOS label="13" value="13" />
-            </PickerIOS>
-            <PickerIOS
-              selectedValue={this.state.p2Tricks}
-              onValueChange={(p2Tricks) => this.setState({p2Tricks})}
-              style={styles.picker} itemStyle={styles.pickerItems}>
-              <PickerItemIOS label="BN" value="blindnil" />
-              <PickerItemIOS label="N" value="nil" />
-              <PickerItemIOS label="1" value="1" />
-              <PickerItemIOS label="2" value="2" />
-              <PickerItemIOS label="3" value="3" />
-              <PickerItemIOS label="4" value="4" />
-              <PickerItemIOS label="5" value="5" />
-              <PickerItemIOS label="6" value="6" />
-              <PickerItemIOS label="7" value="7" />
-              <PickerItemIOS label="8" value="8" />
-              <PickerItemIOS label="9" value="9" />
-              <PickerItemIOS label="10" value="10" />
-              <PickerItemIOS label="11" value="11" />
-              <PickerItemIOS label="12" value="12" />
-              <PickerItemIOS label="13" value="13" />
-            </PickerIOS>
-            <TouchableHighlight style={{backgroundColor: 'lightblue', justifyContent:"center"}} onPress={this._calculateTotal.bind(this)}>
-              <Text>
-                Calculate Score
-              </Text>
-            </TouchableHighlight>
+
+          <View style={{flexDirection: 'row', justifyContent:'space-between'}}>
+            <TextInput style={styles.teamNameInput} onChangeText={this._handleNameChange.bind(this)} placeholder="Team Name" />
             <View style={styles.total}>
-              <Text>Total:</Text>
-              <Text>{this.state.total}{this.state.sandbags}</Text>
-              <Text onValueChange={this._sandbagCheck()}>Sandbags: {this.state.sandbags}</Text>
+              <Text style={[styles.spadesText, {fontSize:18, paddingRight:10}]}>TOTAL: {this.state.total}{this.state.sandbags}</Text>
             </View>
-            <TouchableHighlight onPress={this._resetButton.bind(this)}>
-              <Text>RESET</Text>
-            </TouchableHighlight>
+          </View>
+
+          <View style={styles.bidsTricksTotal}>
+            <View style={{flex:1, alignItems: 'center'}}>
+              <Text style={styles.spadesText}>Bids</Text>
+            </View>
+            <View style={{flex:1, alignItems: 'center'}}>
+              <Text style={styles.spadesText}>Tricks</Text>
+            </View>
+            <View style={{flex:1, alignItems: 'flex-end'}}>
+              <Text style={[styles.spadesText, {paddingRight:10}]} onValueChange={this._sandbagCheck()}>Sandbags: {this.state.sandbags}</Text>
+            </View>
+
+          </View>
+          <View style={styles.playersSandbags}>
+            <View style={{flex:1, alignItems: 'center'}}>
+              <Text style={styles.spadesText}>P1</Text>
+            </View>
+            <View style={{flex:1, alignItems: 'center'}}>
+              <Text style={styles.spadesText}>P2</Text>
+            </View>
+            <View style={{flex:1, alignItems: 'center'}}>
+              <Text style={styles.spadesText}>P1</Text>
+            </View>
+            <View style={{flex:1, alignItems: 'center'}}>
+              <Text style={styles.spadesText}>P2</Text>
+            </View>
+            <View style={{flex:2}}>
+            </View>
+          </View>
+
+          <View>
+            <View style={styles.pickerContainer}>
+              <PickerIOS
+                selectedValue={this.state.p1Bid}
+                onValueChange={(p1Bid) => this.setState({p1Bid})} style={styles.picker} itemStyle={styles.pickerItems}>
+                <PickerItemIOS label="BN" value="blindnil" />
+                <PickerItemIOS label="N" value="nil" />
+                <PickerItemIOS label="1" value="1" />
+                <PickerItemIOS label="2" value="2" />
+                <PickerItemIOS label="3" value="3" />
+                <PickerItemIOS label="4" value="4" />
+                <PickerItemIOS label="5" value="5" />
+                <PickerItemIOS label="6" value="6" />
+                <PickerItemIOS label="7" value="7" />
+                <PickerItemIOS label="8" value="8" />
+                <PickerItemIOS label="9" value="9" />
+                <PickerItemIOS label="10" value="10" />
+                <PickerItemIOS label="11" value="11" />
+                <PickerItemIOS label="12" value="12" />
+                <PickerItemIOS label="13" value="13" />
+              </PickerIOS>
+              <PickerIOS
+                selectedValue={this.state.p2Bid}
+                onValueChange={(p2Bid) => this.setState({p2Bid})}
+                style={styles.picker} itemStyle={styles.pickerItems}>
+                <PickerItemIOS label="BN" value="blindnil" />
+                <PickerItemIOS label="N" value="nil" />
+                <PickerItemIOS label="1" value="1" />
+                <PickerItemIOS label="2" value="2" />
+                <PickerItemIOS label="3" value="3" />
+                <PickerItemIOS label="4" value="4" />
+                <PickerItemIOS label="5" value="5" />
+                <PickerItemIOS label="6" value="6" />
+                <PickerItemIOS label="7" value="7" />
+                <PickerItemIOS label="8" value="8" />
+                <PickerItemIOS label="9" value="9" />
+                <PickerItemIOS label="10" value="10" />
+                <PickerItemIOS label="11" value="11" />
+                <PickerItemIOS label="12" value="12" />
+                <PickerItemIOS label="13" value="13" />
+              </PickerIOS>
+              <PickerIOS
+                selectedValue={this.state.p1Tricks}
+                onValueChange={(p1Tricks) => this.setState({p1Tricks})}
+                style={styles.picker} itemStyle={styles.pickerItems}>
+                <PickerItemIOS label="BN" value="blindnil" />
+                <PickerItemIOS label="N" value="nil" />
+                <PickerItemIOS label="1" value="1" />
+                <PickerItemIOS label="2" value="2" />
+                <PickerItemIOS label="3" value="3" />
+                <PickerItemIOS label="4" value="4" />
+                <PickerItemIOS label="5" value="5" />
+                <PickerItemIOS label="6" value="6" />
+                <PickerItemIOS label="7" value="7" />
+                <PickerItemIOS label="8" value="8" />
+                <PickerItemIOS label="9" value="9" />
+                <PickerItemIOS label="10" value="10" />
+                <PickerItemIOS label="11" value="11" />
+                <PickerItemIOS label="12" value="12" />
+                <PickerItemIOS label="13" value="13" />
+              </PickerIOS>
+              <PickerIOS
+                selectedValue={this.state.p2Tricks}
+                onValueChange={(p2Tricks) => this.setState({p2Tricks})}
+                style={styles.picker} itemStyle={styles.pickerItems}>
+                <PickerItemIOS label="BN" value="blindnil" />
+                <PickerItemIOS label="N" value="nil" />
+                <PickerItemIOS label="1" value="1" />
+                <PickerItemIOS label="2" value="2" />
+                <PickerItemIOS label="3" value="3" />
+                <PickerItemIOS label="4" value="4" />
+                <PickerItemIOS label="5" value="5" />
+                <PickerItemIOS label="6" value="6" />
+                <PickerItemIOS label="7" value="7" />
+                <PickerItemIOS label="8" value="8" />
+                <PickerItemIOS label="9" value="9" />
+                <PickerItemIOS label="10" value="10" />
+                <PickerItemIOS label="11" value="11" />
+                <PickerItemIOS label="12" value="12" />
+                <PickerItemIOS label="13" value="13" />
+              </PickerIOS>
+
+              <TouchableHighlight style={styles.scoreIt} onPress={this._calculateTotal.bind(this)}>
+                <Text style={[styles.spadesText]}>SCORE IT</Text>
+              </TouchableHighlight>
+          </View>
+
+
+            <View style={{alignItems:'flex-end'}}>
+              {/* <View style={{flex:4}}>
+              </View> */}
+              <TouchableHighlight style={{flex:1}} onPress={this._resetButton.bind(this)}>
+                <Text style={[styles.spadesText, {padding:5}]}>RESET</Text>
+              </TouchableHighlight>
+            </View>
           </View>
 
 
@@ -297,20 +325,31 @@ class SpadesPlayer extends Component {
 }
 
 const styles = StyleSheet.create({
+  spadesText: {
+    fontFamily: "Quicksand",
+    color: 'white'
+  },
+  playerContainer: {
+    marginTop: 30,
+    borderColor: 'white',
+    borderWidth: 1,
+    borderRadius: 10
+  },
   pickerContainer: {
     flex:1,
     flexDirection: 'row'
   },
   picker: {
-    flex:1,
-    width: 10,
+    flex:2,
+    width: 20,
+    height: 100
   },
   total: {
-    flex:1,
     justifyContent: 'center'
   },
   pickerItems: {
-    fontSize: 15
+    fontSize: 15,
+    color: 'white'
   },
   bidsTricks: {
     justifyContent: 'space-around',
@@ -319,6 +358,33 @@ const styles = StyleSheet.create({
   },
   p1p2: {
     fontSize: 15,
+  },
+  bidsTricksTotal: {
+    flexDirection: 'row'
+  },
+  playersSandbags: {
+    flexDirection:'row',
+    alignItems:'center'
+  },
+  scoreIt: {
+    flex: 3,
+    backgroundColor: '#65C3BA',
+    justifyContent:"center",
+    alignItems: 'center',
+    margin:10,
+    borderRadius: 5,
+    borderColor:'black',
+    borderWidth:1
+  },
+  teamNameInput: {
+    width: 190,
+    height: 35,
+    borderColor: 'white',
+    borderWidth:1,
+    margin:10,
+    fontFamily:"Quicksand-Bold",
+    color:'white',
+    backgroundColor: '#54B2A9'
   }
 })
 

@@ -58,25 +58,28 @@ export default class GenericContainer extends Component {
     render(){
       return(
         <View  style={styles.container}>
+          <View style={styles.topBar}>
           <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
-            <Text>HOME</Text>
+            <Text style={styles.button}>HOME</Text>
           </TouchableHighlight>
-          <TouchableHighlight >
-            <Text>RESET</Text>
-          </TouchableHighlight>
-            <Slider
-                maximumValue={6}
-                minimumValue={1}
-                step={1}
-                value={this.state.players}
-                onValueChange={players => this.setState({players})}
-              />
+          </View>
+          <Slider
+              maximumValue={6}
+              minimumValue={1}
+              step={1}
+              value={this.state.players}
+              onValueChange={players => this.setState({players})}
+            />
+              <Text style={[styles.button, {textAlign:'center', marginBottom: 5}]}>Number of Players: {this.state.players}</Text>
               <ScrollView>
               {this._populatePlayers()}
               </ScrollView>
-              <Text>Number of Players: {this.state.players}</Text>
                 <CountDown />
-              <TextInput style={{height: 20, width: 110, borderColor: 'gray', borderWidth: 1, fontSize: 12}} onChangeText={this._handleNameChange.bind(this)} placeholder={'Set Winning Score'} />
+                <View style={{flexDirection:'row', alignItems:'center'}}>
+                  <Text style={styles.setWinnerText}>Set Winning Score: </Text>
+                  <TextInput style={styles.winningScore} onChangeText={this._handleNameChange.bind(this)}/>
+                </View>
+
         </View>
 
 
@@ -87,10 +90,10 @@ export default class GenericContainer extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 20,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    margin: 10,
+    marginTop:20,
+    padding: 10,
+    backgroundColor: '#009688',
   },
   welcome: {
     fontSize: 20,
@@ -101,5 +104,31 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  button: {
+    fontFamily: "Quicksand",
+    color: 'white',
+    backgroundColor: "#54B2A9",
+    padding: 3,
+    borderColor: 'black',
+  },
+  setWinnerText: {
+    color: 'white',
+    fontFamily: 'Quicksand-Bold',
+    fontSize:18
+  },
+  winningScore: {
+    width: 100,
+    height: 35,
+    borderColor: 'white',
+    borderWidth:1,
+    margin:10,
+    fontFamily:"Quicksand-Bold",
+    color:'white',
+    backgroundColor: '#54B2A9'
+  },
+  topBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
 });

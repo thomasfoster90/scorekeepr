@@ -31,28 +31,28 @@ var CountDown = React.createClass({
       style.push({color: 'gray'});
       style.push(this.props.disabledTextStyle);
       component =
-          <View>
+          <View style={styles.container}>
                 <TouchableHighlight
                     style={[styles.wrapper,this.props.buttonStyle]}
                     onPress={this._resetTimer}
                     >
-                      <Text>Reset</Text>
+                      <Text style={styles.Timer}>Reset</Text>
                 </TouchableHighlight>
             <TouchableHighlight
                 >
-              <Text style={[style]}>{this.props.text}({this.state.time})</Text>
+              <Text style={[style, styles.clock]}>{this.props.text}({this.state.time})</Text>
             </TouchableHighlight>
           </View>
     } else {
       component =
-        <View>
+        <View style={styles.container}>
           <TouchableHighlight
               style={[styles.wrapper,this.props.buttonStyle]}
               onPress={this._onPress}
               >
-                <Text>Start</Text>
+                <Text style={styles.Timer}>Start</Text>
           </TouchableHighlight>
-          <Text style={[style,this.props.textStyle]}>{this.props.text}({this.state.time})</Text>
+          <Text style={[style,this.props.textStyle, styles.clock]}>{this.props.text}({this.state.time})</Text>
         </View>
     }
     return (
@@ -97,6 +97,9 @@ var CountDown = React.createClass({
 });
 
 var styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row'
+  },
   text: {
     color: 'black'
   },
@@ -104,6 +107,26 @@ var styles = StyleSheet.create({
     padding: 10,
     marginRight:10,
     backgroundColor: '#e5e5e5',
+  },
+  clock: {
+    color: 'white',
+    backgroundColor: '#009688',
+    fontFamily: 'Quicksand-Bold',
+    fontSize:20,
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 3,
+    padding: 10,
+    alignItems: 'center'
+  },
+  Timer: {
+    fontFamily: 'Quicksand',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    backgroundColor: '#009688',
+    borderRadius: 3
+
   }
 });
 

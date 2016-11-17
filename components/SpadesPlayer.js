@@ -372,7 +372,9 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     alignItems: 'center',
     margin:10,
-    borderRadius: 5
+    borderRadius: 5,
+    borderColor:'black',
+    borderWidth:1
   },
   teamNameInput: {
     width: 190,

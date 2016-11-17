@@ -116,7 +116,7 @@ export default class SpadesContainer extends Component {
           </Modal>
           <TouchableHighlight onPress={() => {
             this.setModalVisible(true)
-          }}>
+            }}>
             <Text style={[styles.button, {textAlign:'center'}]}>RULES OF SPADES</Text>
           </TouchableHighlight>
         </View>

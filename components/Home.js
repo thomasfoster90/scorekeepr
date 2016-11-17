@@ -38,15 +38,15 @@ export default class Home extends Component {
     render(){
       return(
         <View  style={styles.container}>
-                <Text>LOGO</Text>
+                <Text style={styles.titles}>LOGO</Text>
                 <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
-                  <Text>BASIC</Text>
+                  <Text style={styles.titles}>BASIC</Text>
                 </TouchableHighlight>
                 <TouchableHighlight onPress={this.onButtonPressPing.bind(this)}>
-                  <Text>PING PONG</Text>
+                  <Text style={styles.titles}>PING PONG</Text>
                 </TouchableHighlight>
                 <TouchableHighlight onPress={this.onButtonPressRummy.bind(this)}>
-                  <Text>SPADES</Text>
+                  <Text style={styles.titles}>SPADES</Text>
                 </TouchableHighlight>
               </View>
 
@@ -72,4 +72,8 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  titles: {
+    fontFamily: 'Quicksand-Bold',
+    fontSize: 30
+  }
 });

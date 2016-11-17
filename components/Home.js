@@ -29,7 +29,7 @@ export default class Home extends Component {
         id: 'PingPongContainer'
       })
     }
-    onButtonPressRummy(){
+    onButtonPressSpades(){
       this.props.navigator.push({
         id: 'SpadesContainer'
       })
@@ -38,17 +38,27 @@ export default class Home extends Component {
     render(){
       return(
         <View  style={styles.container}>
-                <Text style={styles.titles}>LOGO</Text>
-                <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
-                  <Text style={styles.titles}>BASIC</Text>
-                </TouchableHighlight>
-                <TouchableHighlight onPress={this.onButtonPressPing.bind(this)}>
-                  <Text style={styles.titles}>PING PONG</Text>
-                </TouchableHighlight>
-                <TouchableHighlight onPress={this.onButtonPressRummy.bind(this)}>
-                  <Text style={styles.titles}>SPADES</Text>
-                </TouchableHighlight>
-              </View>
+          <View style={styles.firstContainer}>
+          </View>
+          <View style={styles.secondContainer}>
+            <Text style={styles.titles}>LOGO</Text>
+          </View>
+          <View style={styles.thirdContainer}>
+            <TouchableHighlight onPress={this.onButtonPressSpades.bind(this)}>
+              <Text style={styles.titles}>SPADES</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={styles.fourthContainer}>
+            <TouchableHighlight onPress={this.onButtonPressPing.bind(this)}>
+              <Text style={styles.titles}>PING PONG</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={styles.fifthContainer}>
+            <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
+              <Text style={styles.titles}>BASIC</Text>
+            </TouchableHighlight>
+          </View>
+        </View>
 
       )
     }
@@ -57,23 +67,44 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
     margin: 10,
+    marginTop:20,
+    justifyContent: 'center',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  firstContainer: {
+    flex:1,
+    backgroundColor: "#83D0C9",
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  secondContainer: {
+    flex:1,
+    backgroundColor: "#65C3BA",
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  thirdContainer: {
+    flex:1,
+    backgroundColor: "#54B2A9",
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  fourthContainer: {
+    flex:1,
+    backgroundColor: "#35A79C",
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  fifthContainer: {
+    flex:1,
+    backgroundColor: "#009688",
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   titles: {
-    fontFamily: 'Quicksand-Bold',
-    fontSize: 30
+    fontFamily: 'Quicksand',
+    fontSize: 30,
+    color: 'white',
+
   }
 });

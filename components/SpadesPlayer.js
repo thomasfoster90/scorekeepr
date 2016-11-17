@@ -25,6 +25,15 @@ class SpadesPlayer extends Component {
     }
   }
 
+  _resetButton(){
+    console.log('resetssss');
+    this.setState({
+      total:"0",
+      sandbags: '0'
+    })
+
+  }
+
   _handleNameChange(teamName) {
     this.setState({teamName})
   }
@@ -276,6 +285,9 @@ class SpadesPlayer extends Component {
               <Text>{this.state.total}{this.state.sandbags}</Text>
               <Text onValueChange={this._sandbagCheck()}>Sandbags: {this.state.sandbags}</Text>
             </View>
+            <TouchableHighlight onPress={this._resetButton.bind(this)}>
+              <Text>RESET</Text>
+            </TouchableHighlight>
           </View>
 
 

@@ -53,5 +53,5 @@ export default class scorekeepr extends Component {
 
 
 
-// console.disableYellowBox = true;
+console.disableYellowBox = true;
 AppRegistry.registerComponent('scorekeepr', () => scorekeepr);

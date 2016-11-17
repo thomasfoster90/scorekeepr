@@ -38,7 +38,7 @@ export default class Home extends Component {
     render(){
       return(
         <View  style={styles.container}>
-                <Text>Home</Text>
+                <Text>LOGO</Text>
                 <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
                   <Text>BASIC</Text>
                 </TouchableHighlight>

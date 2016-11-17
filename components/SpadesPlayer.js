@@ -5,10 +5,10 @@ import {
   View,
   TouchableHighlight,
   TextInput,
-  PickerIOS
   } from 'react-native';
 
-  const PickerItemIOS = PickerIOS.Item;
+import PickerIOS from "./PickerIOS"
+const PickerItemIOS = PickerIOS.Item;
 
 class SpadesPlayer extends Component {
   constructor(props){
@@ -304,6 +304,7 @@ const styles = StyleSheet.create({
   picker: {
     flex:1,
     width: 10,
+    height: 100
   },
   total: {
     flex:1,

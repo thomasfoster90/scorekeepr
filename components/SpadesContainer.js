@@ -9,7 +9,8 @@ import {
   TouchableHighlight,
   Navigator,
   ScrollView,
-  Modal
+  Modal,
+  Image
 } from 'react-native';
 
 
@@ -68,7 +69,8 @@ export default class SpadesContainer extends Component {
 
           <View style={styles.topBar}>
             <TouchableHighlight style={styles.button} onPress={this.onButtonPress.bind(this)}>
-              <Text style={styles.button}>HOME</Text>
+              {/* <Text style={styles.button}>HOME</Text> */}
+              <Image source={require('./public/home.png')} style={styles.logo} />
             </TouchableHighlight>
           </View>
 
@@ -196,5 +198,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Quicksand-Bold',
     fontSize:18,
     borderRadius: 2
+  },
+  logo: {
+    justifyContent: 'flex-start',
+    height: 24,
+    width: 24
   },
 });

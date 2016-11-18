@@ -9,7 +9,8 @@ import {
   Navigator,
   ScrollView,
   TextInput,
-  Modal
+  Modal,
+  Image
 } from 'react-native';
 
 
@@ -71,7 +72,8 @@ export default class PingPongContainer extends Component {
 
           <View style={styles.topBar}>
             <TouchableHighlight style={styles.button} onPress={this.onButtonPress.bind(this)}>
-              <Text style={styles.button}>HOME</Text>
+              {/* <Text style={styles.button}>HOME</Text> */}
+              <Image source={require('./public/home.png')} style={styles.logo} />
             </TouchableHighlight>
           </View>
 
@@ -196,4 +198,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
+  logo: {
+    justifyContent: 'flex-start',
+    height: 24,
+    width: 24
+  }
 });

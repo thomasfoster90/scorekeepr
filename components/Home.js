@@ -48,21 +48,15 @@ export default class Home extends Component {
             </Image>
           </View>
 
-          <View style={styles.thirdContainer}>
-            <TouchableHighlight style={styles.menuButton} onPress={this.onButtonPressSpades.bind(this)}>
+            <TouchableHighlight style={[styles.menuButton, styles.thirdContainer]} onPress={this.onButtonPressSpades.bind(this)}>
               <Text style={styles.titles}>SPADES</Text>
             </TouchableHighlight>
-          </View>
-          <View style={styles.fourthContainer}>
-            <TouchableHighlight style={styles.menuButton} onPress={this.onButtonPressPing.bind(this)}>
+            <TouchableHighlight style={[styles.menuButton, styles.fourthContainer]} onPress={this.onButtonPressPing.bind(this)}>
               <Text style={styles.titles}>PING PONG</Text>
             </TouchableHighlight>
-          </View>
-          <View style={styles.fifthContainer}>
-            <TouchableHighlight style={styles.menuButton} onPress={this.onButtonPress.bind(this)}>
+            <TouchableHighlight style={[styles.menuButton, styles.fifthContainer]} onPress={this.onButtonPress.bind(this)}>
               <Text style={styles.titles}>BASIC</Text>
             </TouchableHighlight>
-          </View>
         </View>
 
       )

@@ -59,7 +59,7 @@ export default class GenericContainer extends Component {
       return(
         <View  style={styles.container}>
           <View style={styles.topBar}>
-          <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
+          <TouchableHighlight style={styles.button} onPress={this.onButtonPress.bind(this)}>
             <Text style={styles.button}>HOME</Text>
           </TouchableHighlight>
           </View>
@@ -70,7 +70,9 @@ export default class GenericContainer extends Component {
               value={this.state.players}
               onValueChange={players => this.setState({players})}
             />
-              <Text style={[styles.button, {textAlign:'center', marginBottom: 5}]}>Number of Players: {this.state.players}</Text>
+            <View style={styles.button}>
+              <Text style={[styles.button, {textAlign:'center'}]}>NUMBER OF PLAYERS: {this.state.players}</Text>
+            </View>
               <ScrollView>
               {this._populatePlayers()}
               </ScrollView>
@@ -108,14 +110,18 @@ const styles = StyleSheet.create({
   button: {
     fontFamily: "Quicksand",
     color: 'white',
-    backgroundColor: "#54B2A9",
-    padding: 3,
-    borderColor: 'black',
+    backgroundColor: "#25746c",
+    padding: 2,
+    borderRadius: 8,
+    borderWidth:1,
+    borderColor: "#25746c",
+    textAlign: 'center'
   },
   setWinnerText: {
     color: 'white',
     fontFamily: 'Quicksand-Bold',
-    fontSize:18
+    fontSize:18,
+    borderRadius: 2
   },
   winningScore: {
     width: 100,

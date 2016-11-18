@@ -67,7 +67,7 @@ export default class SpadesContainer extends Component {
         <View  style={styles.container}>
 
           <View style={styles.topBar}>
-            <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
+            <TouchableHighlight style={styles.button} onPress={this.onButtonPress.bind(this)}>
               <Text style={styles.button}>HOME</Text>
             </TouchableHighlight>
           </View>
@@ -121,7 +121,7 @@ export default class SpadesContainer extends Component {
               <TouchableHighlight onPress={() => {
                 this.setModalVisible(!this.state.modalVisible)
               }}>
-                <Text style={[styles.button, {color:'black', textAlign: 'center'}]}>BACK TO GAME</Text>
+                <Text style={[styles.button, {color:'white', textAlign: 'center'}]}>BACK TO GAME</Text>
               </TouchableHighlight>
             </View>
            </View>
@@ -163,9 +163,12 @@ const styles = StyleSheet.create({
   button: {
     fontFamily: "Quicksand",
     color: 'white',
-    backgroundColor: "#54B2A9",
-    padding: 3,
-    borderColor: 'black',
+    backgroundColor: "#25746c",
+    padding: 2,
+    borderRadius: 8,
+    borderWidth:1,
+    borderColor: "#25746c",
+    textAlign: 'center'
   },
   rulesText: {
     color: 'white',

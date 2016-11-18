@@ -40,7 +40,7 @@ export default class Home extends Component {
       return(
         <View  style={styles.container}>
           <View style={styles.logoContainer}>
-            <Image source={require('./public/scorekeeperlight.png')} style={styles.logo}>
+            <Image source={require('./public/scorekeeperlight2.png')} style={styles.logo}>
               {/* <View style={styles.firstContainer}>
               </View>
               <View style={styles.secondContainer}>
@@ -123,6 +123,6 @@ const styles = StyleSheet.create({
 
   },
   menuButton: {
-    
+
   }
 });

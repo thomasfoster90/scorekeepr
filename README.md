@@ -16,7 +16,7 @@ There are many games that require tracking scores. Most of us keep track by writ
 <li>javascript</li>
 <li>React
 <li>React-Native</li>
-</br> *Navigation* </br>
+*Navigation* </br>
 *picker*</br>
 *models*
 <li>XCODE</li>

@@ -58,25 +58,30 @@ export default class GenericContainer extends Component {
     render(){
       return(
         <View  style={styles.container}>
-          <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
-            <Text>HOME</Text>
+          <View style={styles.topBar}>
+          <TouchableHighlight style={styles.button} onPress={this.onButtonPress.bind(this)}>
+            <Text style={styles.button}>HOME</Text>
           </TouchableHighlight>
-          <TouchableHighlight >
-            <Text>RESET</Text>
-          </TouchableHighlight>
-            <Slider
-                maximumValue={6}
-                minimumValue={1}
-                step={1}
-                value={this.state.players}
-                onValueChange={players => this.setState({players})}
-              />
+          </View>
+          <Slider
+              maximumValue={6}
+              minimumValue={1}
+              step={1}
+              value={this.state.players}
+              onValueChange={players => this.setState({players})}
+            />
+            <View style={styles.button}>
+              <Text style={[styles.button, {textAlign:'center'}]}>NUMBER OF PLAYERS: {this.state.players}</Text>
+            </View>
               <ScrollView>
               {this._populatePlayers()}
               </ScrollView>
-              <Text>Number of Players: {this.state.players}</Text>
                 <CountDown />
-              <TextInput style={{height: 20, width: 110, borderColor: 'gray', borderWidth: 1, fontSize: 12}} onChangeText={this._handleNameChange.bind(this)} placeholder={'Set Winning Score'} />
+                <View style={{flexDirection:'row', alignItems:'center'}}>
+                  <Text style={styles.setWinnerText}>Set Winning Score: </Text>
+                  <TextInput style={styles.winningScore} onChangeText={this._handleNameChange.bind(this)}/>
+                </View>
+
         </View>
 
 
@@ -87,10 +92,10 @@ export default class GenericContainer extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 20,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    margin: 10,
+    marginTop:20,
+    padding: 10,
+    backgroundColor: '#009688',
   },
   welcome: {
     fontSize: 20,
@@ -101,5 +106,35 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  button: {
+    fontFamily: "Quicksand",
+    color: 'white',
+    backgroundColor: "#25746c",
+    padding: 2,
+    borderRadius: 8,
+    borderWidth:1,
+    borderColor: "#25746c",
+    textAlign: 'center'
+  },
+  setWinnerText: {
+    color: 'white',
+    fontFamily: 'Quicksand-Bold',
+    fontSize:18,
+    borderRadius: 2
+  },
+  winningScore: {
+    width: 100,
+    height: 35,
+    borderColor: 'white',
+    borderWidth:1,
+    margin:10,
+    fontFamily:"Quicksand-Bold",
+    color:'white',
+    backgroundColor: '#54B2A9'
+  },
+  topBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
 });

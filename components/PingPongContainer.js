@@ -24,7 +24,7 @@ export default class PingPongContainer extends Component {
 
     this.state={
       players:2,
-      winner: 0,
+      winner: 21,
       modalVisible: false
 
     }
@@ -73,41 +73,48 @@ export default class PingPongContainer extends Component {
     render(){
       return(
         <View style={styles.container}>
-          <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
-            <Text>HOME</Text>
-          </TouchableHighlight>
-              <ScrollView>
-              {this._populatePlayers()}
-              </ScrollView>
-              <Text>Number of Players: {this.state.players}</Text>
-                <Text>Ping Pong</Text>
-          <TextInput style={{height: 20, width: 100, borderColor: 'gray', borderWidth: 1, fontSize: 12}} onChangeText={this._handleNameChange.bind(this)} placeholder={'Winning score'} />
+
+          <View style={styles.topBar}>
+            <TouchableHighlight style={styles.button} onPress={this.onButtonPress.bind(this)}>
+              <Text style={styles.button}>HOME</Text>
+            </TouchableHighlight>
+          </View>
+
+          <ScrollView>
+          {this._populatePlayers()}
+          </ScrollView>
+
+          <View style={{flexDirection:'row', alignItems:'center', marginBottom: 20}}>
+            <Text style={styles.setWinnerText}>Set Winning Score: </Text>
+            <TextInput style={styles.winningScore} onChangeText={this._handleNameChange.bind(this)} placeholder=" Default: 21"/>
+          </View>
+
           <Modal
           animationType={"slide"}
           transparent={false}
           visible={this.state.modalVisible}
           onRequestClose={() => {alert("Modal has been closed.")}}
           >
-         <View style={{marginTop: 22}}>
+         <View style={{margin:10, padding:10, marginTop: 22, backgroundColor: "#009688"}}>
           <View>
           <ScrollView>
 
-          <Text> A game is started when one player (server) makes a service before the receiver makes the return.</Text>
-
-          <Text> The Server should:</Text>
-          <Text> - start with the ball resting freely on an open palm.</Text>
-          <Text> - project the ball near vertically upwards, without imparting spin, so that it rises at least 16cm.</Text>
-          <Text> - strike the ball so that it touches first his/her court and then, after passing over the net assembly, touches directly the receiver's court. In doubles, the ball must touch successively the right half court of server and receiver.
+          <Text style={styles.rulesText}>A game is started when one player (server) makes a service before the receiver makes the return.</Text>
+          <Text style={styles.rulesText}>{' '}</Text>
+          <Text style={styles.rulesTextBold}>The Server should:</Text>
+          <Text style={styles.rulesText}> - start with the ball resting freely on an open palm.</Text>
+          <Text style={styles.rulesText}> - project the ball near vertically upwards, without imparting spin, so that it rises at least 16cm.</Text>
+          <Text style={styles.rulesText}> - strike the ball so that it touches first his/her court and then, after passing over the net assembly, touches directly the receiver's court. In doubles, the ball must touch successively the right half court of server and receiver.
           Once the ball has been served, both players are to make returns until a point is scored. In doubles, each player on the same team must take turns to make the return.</Text>
+          <Text style={styles.rulesText}>{' '}</Text>
+          <Text style={styles.rulesText}>After 2 points have been scored, the receiving player/pair shall become the serving player/pair and so on until the end of the game.</Text>
+          <Text style={styles.rulesText}>{' '}</Text>
+          <Text style={styles.rulesTextBold}>Scoring</Text>
 
-          <Text> After 2 points have been scored, the receiving player/pair shall become the serving player/pair and so on until the end of the game.</Text>
-
-          <Text> Scoring</Text>
-
-          <Text> A set is when one of the players or pairs first score 11 points. In the event that both players/pairs score 10 points, a set is be won by the first player/pair to gain a 2-point lead. A full match is won when a player or pair wins the best of any odd number of sets (3,5,7).</Text>
-
-          <Text> A point is scored when:</Text>
-          <Text> 1. an opponent fails to make a correct service,
+          <Text style={styles.rulesText}>A set is when one of the players or pairs first score 11 points. In the event that both players/pairs score 10 points, a set is be won by the first player/pair to gain a 2-point lead. A full match is won when a player or pair wins the best of any odd number of sets (3,5,7).</Text>
+          <Text style={styles.rulesText}>{' '}</Text>
+          <Text style={styles.rulesTextBold}>A point is scored when:</Text>
+          <Text style={styles.rulesText}>1. an opponent fails to make a correct service,
           2. an opponent fails to make a return,
           3. the ball touches any part of an opponent's body,
           4. an opponent strikes the ball twice in succession,
@@ -118,15 +125,17 @@ export default class PingPongContainer extends Component {
             <TouchableHighlight onPress={() => {
               this.setModalVisible(!this.state.modalVisible)
             }}>
-              <Text>BACK TO GAME</Text>
+              <Text style={[styles.button, {marginTop:10, color:'white', textAlign: 'center'}]}>BACK TO GAME</Text>
             </TouchableHighlight>
           </View>
          </View>
         </Modal>
-        <TouchableHighlight onPress={() => {
+        <TouchableHighlight style={{alignItems:'center', backgroundColor:"#25746c"}} onPress={() => {
           this.setModalVisible(true)
         }}>
-          <Text>RULES</Text>
+          <Text style={[styles.button, {textAlign:'center'}]}>
+            RULES OF PING PONG
+          </Text>
         </TouchableHighlight>
         </View>
 
@@ -138,10 +147,10 @@ export default class PingPongContainer extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 20,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    margin: 10,
+    marginTop:20,
+    padding: 10,
+    backgroundColor: '#009688',
   },
   welcome: {
     fontSize: 20,
@@ -152,5 +161,45 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  rulesText: {
+    color: 'white',
+    fontFamily: 'Quicksand',
+  },
+  rulesTextBold: {
+    color: 'white',
+    fontFamily: 'Quicksand',
+    fontSize: 16,
+    fontWeight: "bold",
+    letterSpacing: 3
+  },
+  winningScore: {
+    width: 100,
+    height: 35,
+    borderColor: 'white',
+    borderWidth:1,
+    margin:10,
+    fontFamily:"Quicksand-Bold",
+    color:'white',
+    backgroundColor: '#54B2A9'
+  },
+  setWinnerText: {
+    color: 'white',
+    fontFamily: 'Quicksand-Bold',
+    fontSize:18
+  },
+  button: {
+    fontFamily: "Quicksand",
+    color: 'white',
+    backgroundColor: "#25746c",
+    padding: 2,
+    borderRadius: 8,
+    borderWidth:1,
+    borderColor: "#25746c",
+    textAlign: 'center'
+  },
+  topBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
 });

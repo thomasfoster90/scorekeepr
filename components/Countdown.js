@@ -31,28 +31,28 @@ var CountDown = React.createClass({
       style.push({color: 'gray'});
       style.push(this.props.disabledTextStyle);
       component =
-          <View>
+          <View style={styles.container}>
                 <TouchableHighlight
                     style={[styles.wrapper,this.props.buttonStyle]}
                     onPress={this._resetTimer}
                     >
-                      <Text>Reset</Text>
+                      <Text style={styles.Timer}>RESET</Text>
                 </TouchableHighlight>
             <TouchableHighlight
                 >
-              <Text style={[style]}>{this.props.text}({this.state.time})</Text>
+              <Text style={[style, styles.clock]}>{this.props.text}{this.state.time}</Text>
             </TouchableHighlight>
           </View>
     } else {
       component =
-        <View>
+        <View style={styles.container}>
           <TouchableHighlight
               style={[styles.wrapper,this.props.buttonStyle]}
               onPress={this._onPress}
               >
-                <Text>Start</Text>
+                <Text style={styles.Timer}>START</Text>
           </TouchableHighlight>
-          <Text style={[style,this.props.textStyle]}>{this.props.text}({this.state.time})</Text>
+          <Text style={[style,this.props.textStyle, styles.clock]}>{this.props.text}{this.state.time}</Text>
         </View>
     }
     return (
@@ -97,13 +97,44 @@ var CountDown = React.createClass({
 });
 
 var styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#009688'
+  },
   text: {
     color: 'black'
   },
   wrapper: {
     padding: 10,
     marginRight:10,
-    backgroundColor: '#e5e5e5',
+    backgroundColor: "#25746c",
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 3,
+    width: 100,
+  },
+  clock: {
+    color: 'white',
+    backgroundColor: "#25746c",
+    fontFamily: 'Quicksand-Bold',
+    fontSize:15,
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 3,
+    padding: 10,
+    width: 70,
+    textAlign: 'center'
+  },
+  Timer: {
+    fontFamily: 'Quicksand',
+    justifyContent: 'center',
+    color: 'white',
+    backgroundColor: "#25746c",
+    borderRadius: 3,
+    fontSize: 15,
+    textAlign: 'center'
+
   }
 });
 

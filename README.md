@@ -41,10 +41,11 @@ http://i.imgur.com/PnP0GXL.jpg" title="spades-model"</a>
 <a href="http://imgur.com/W36kDv8"><img src="http://i.imgur.com/W36kDv8.png" title="trello"</a>
 
 ##Contributors##
-
-Nishtha Ahuja
-Joshua Bartz
-Helene Benz
-Thomas Foster
-Nathan Jensby
-Sean Lewis
+<ul>
+<li>Nishtha Ahuja </li>
+<li>Joshua Bartz</li>
+<li>Helene Benz</li>
+<li>Thomas Foster</li>
+<li>Nathan Jensby</li>
+<li>Sean Lewis</li>
+</ul>

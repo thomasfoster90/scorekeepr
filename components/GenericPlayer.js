@@ -98,7 +98,8 @@ const styles = StyleSheet.create({
     marginTop: 5,
     marginBottom: 5,
     borderWidth: 1,
-    borderColor: 'white'
+    borderColor: 'white',
+    borderRadius: 10
   },
   buttons: {
     flexDirection: 'row',
@@ -132,6 +133,7 @@ const styles = StyleSheet.create({
     borderRadius:5,
     height:50,
     margin:5,
-    backgroundColor:"#65C3BA"
+    backgroundColor:"#65C3BA",
+    borderColor: 'white'
   }
 })

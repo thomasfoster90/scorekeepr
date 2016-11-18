@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 20,
     borderColor: 'white',
-    borderWidth: 1
+    borderWidth: 1,
+    borderRadius: 10
   },
   buttons: {
     flexDirection: 'row',
@@ -133,6 +134,7 @@ const styles = StyleSheet.create({
     flex:2,
     borderWidth:1,
     borderRadius:5,
+    borderColor: 'white',
     height:50,
     margin:5,
     backgroundColor:"#65C3BA"

@@ -373,7 +373,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin:10,
     borderRadius: 5,
-    borderColor:'black',
+    borderColor:'white',
     borderWidth:1
   },
   teamNameInput: {

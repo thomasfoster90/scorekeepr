@@ -75,7 +75,7 @@ export default class PingPongContainer extends Component {
         <View style={styles.container}>
 
           <View style={styles.topBar}>
-            <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
+            <TouchableHighlight style={styles.button} onPress={this.onButtonPress.bind(this)}>
               <Text style={styles.button}>HOME</Text>
             </TouchableHighlight>
           </View>
@@ -84,7 +84,7 @@ export default class PingPongContainer extends Component {
           {this._populatePlayers()}
           </ScrollView>
 
-          <View style={{flexDirection:'row', alignItems:'center'}}>
+          <View style={{flexDirection:'row', alignItems:'center', marginBottom: 20}}>
             <Text style={styles.setWinnerText}>Set Winning Score: </Text>
             <TextInput style={styles.winningScore} onChangeText={this._handleNameChange.bind(this)}/>
           </View>
@@ -125,12 +125,12 @@ export default class PingPongContainer extends Component {
             <TouchableHighlight onPress={() => {
               this.setModalVisible(!this.state.modalVisible)
             }}>
-              <Text style={[styles.button, {marginTop:10, color:'black', textAlign: 'center'}]}>BACK TO GAME</Text>
+              <Text style={[styles.button, {marginTop:10, color:'white', textAlign: 'center'}]}>BACK TO GAME</Text>
             </TouchableHighlight>
           </View>
          </View>
         </Modal>
-        <TouchableHighlight style={{alignItems:'center', backgroundColor:"#54B2A9"}} onPress={() => {
+        <TouchableHighlight style={{alignItems:'center', backgroundColor:"#25746c"}} onPress={() => {
           this.setModalVisible(true)
         }}>
           <Text style={[styles.button, {textAlign:'center'}]}>
@@ -191,9 +191,12 @@ const styles = StyleSheet.create({
   button: {
     fontFamily: "Quicksand",
     color: 'white',
-    backgroundColor: "#54B2A9",
-    padding: 3,
-    borderColor: 'black',
+    backgroundColor: "#25746c",
+    padding: 2,
+    borderRadius: 8,
+    borderWidth:1,
+    borderColor: "#25746c",
+    textAlign: 'center'
   },
   topBar: {
     flexDirection: 'row',

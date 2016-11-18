@@ -26,10 +26,15 @@ class SpadesPlayer extends Component {
   }
 
   _resetButton(){
-    console.log('resetssss');
+    console.log();
     this.setState({
-      total:"0",
-      sandbags: '0'
+      total: "0",
+      teamName: '',
+      p1Bid: "1",
+      p2Bid: "1",
+      p1Tricks: "1",
+      p2Tricks: "1",
+      sandbags:'0'
     })
 
   }
@@ -47,7 +52,6 @@ class SpadesPlayer extends Component {
     } else {
       this._normalScore()
     }
-    // this._sandbagCheck()
   }
 
 
@@ -124,6 +128,7 @@ class SpadesPlayer extends Component {
   }
 
   _nilScore() {
+    console.log("nilScore");
     let p1B = this.state.p1Bid;
     let p1T = this.state.p1Tricks;
     let p2B = this.state.p2Bid;
@@ -135,11 +140,11 @@ class SpadesPlayer extends Component {
       if (p1B === 'nil') {
         //get p2's score
         if (p2T >= p2B)  {
-          var amtToAdd = p2B;
+          var amtToAdd = +p2B;
           sandbags += (+p2T)-(+p2B)
 
         } else {
-           var amtToAdd = p2B*(-1);
+           var amtToAdd = +p2B*(-1);
          }
          // if p1 got nil
         if (p1T === 'nil') {
@@ -153,11 +158,11 @@ class SpadesPlayer extends Component {
       // else p2 bid nil, so get p1's score
         else if (p2B === 'nil') {
           if (p1T >= p1B)  {
-          var amtToAdd = p1B;
+          var amtToAdd = +p1B;
           sandbags += (+p1T) - (+p1B)
 
         } else {
-           var amtToAdd = p1B*(-1);
+           var amtToAdd = +p1B*(-1);
          }
          // if p2 got nil
         if (p2T === 'nil') {
@@ -168,7 +173,8 @@ class SpadesPlayer extends Component {
           sandbags += (+p1T)
       }
     }
-    this.setState({ total, sandbags })
+    total+=amtToAdd;
+    this.setState({ total, sandbags });
     this._sandbagCheck()
   }
 

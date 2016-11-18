@@ -10,9 +10,8 @@ import {
   TextInput
 } from 'react-native';
 
-import GenericContainer from './GenericContainer'
 
-export default class GenericPlayer extends Component {
+export default class PingPongPlayer extends Component {
   constructor(props){
     super(props);
 
@@ -22,31 +21,31 @@ export default class GenericPlayer extends Component {
     }
   }
 
+
   _resetButton(){
+    this.props.onReset()
     this.setState({
       total: 0,
       text: ''
     })
+
   }
 
-  _addOne(){
+  _addOne(total){
     console.log('add');
     let newTotal = this.state.total + 1
     let winner = this.props.winScore
-    console.log(newTotal);
-    console.log(winner);
     this.setState({
       total: newTotal
     })
     if(newTotal === +winner){
-      alert('Winner')
+      alert('Winner!')
     }
   }
 
   _subtractOne(){
     console.log('subtract');
     let newTotal = this.state.total - 1
-    console.log(newTotal);
     if (this.state.total === 0) {
       alert('No Points to Subtract')
     } else {
@@ -54,7 +53,6 @@ export default class GenericPlayer extends Component {
         total: newTotal
       })
     }
-
   }
 
   _handleNameChange(text) {
@@ -95,10 +93,10 @@ export default class GenericPlayer extends Component {
 const styles = StyleSheet.create({
   playerContainer: {
     backgroundColor: '#009688',
-    marginTop: 5,
-    marginBottom: 5,
-    borderWidth: 1,
+    marginTop: 30,
+    marginBottom: 20,
     borderColor: 'white',
+    borderWidth: 1,
     borderRadius: 10
   },
   buttons: {
@@ -131,9 +129,9 @@ const styles = StyleSheet.create({
     flex:2,
     borderWidth:1,
     borderRadius:5,
+    borderColor: 'white',
     height:50,
     margin:5,
-    backgroundColor:"#65C3BA",
-    borderColor: 'white'
+    backgroundColor:"#65C3BA"
   }
 })

@@ -24,13 +24,13 @@ There are many games that require tracking scores. Most of us keep track by writ
 
 
 
-##user stories##
+##User Stories##
 As a Spades player, I don't want to have to look for pen and paper every time I want to play.
 
 As a person who likes to play games, I need to keep track of score for games or rounds where points increment by 1-5 (Ping Pong, Catch Phrase, Tabboo, Bags, Washers, Pool).
 
 
-##wireframes##
+##Wireframes##
 <a href="http://imgur.com/i2S167i"><img src="http://i.imgur.com/i2S167i.jpg" title="spades-layout"</a>
 
 <a href="http://imgur.com/2uGM5qJ"><img src="http://i.imgur.com/2uGM5qJ.jpg" title="wireframe"</a>
@@ -39,3 +39,12 @@ As a person who likes to play games, I need to keep track of score for games or 
 http://i.imgur.com/PnP0GXL.jpg" title="spades-model"</a>
 
 <a href="http://imgur.com/W36kDv8"><img src="http://i.imgur.com/W36kDv8.png" title="trello"</a>
+
+##Contributors##
+
+Nishtha Ahuja
+Joshua Bartz
+Helene Benz
+Thomas Foster
+Nathan Jensby
+Sean Lewis

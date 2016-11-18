@@ -8,7 +8,8 @@ import {
   TouchableHighlight,
   Navigator,
   ScrollView,
-  TextInput
+  TextInput,
+  Image
 } from 'react-native';
 
 import CountDown from './Countdown'
@@ -59,9 +60,10 @@ export default class GenericContainer extends Component {
       return(
         <View  style={styles.container}>
           <View style={styles.topBar}>
-          <TouchableHighlight style={styles.button} onPress={this.onButtonPress.bind(this)}>
-            <Text style={styles.button}>HOME</Text>
-          </TouchableHighlight>
+            <TouchableHighlight style={styles.button} onPress={this.onButtonPress.bind(this)}>
+              {/* <Text style={styles.button}>HOME</Text> */}
+              <Image source={require('./public/home.png')} style={styles.logo} />
+            </TouchableHighlight>
           </View>
           <Slider
               maximumValue={6}
@@ -137,4 +139,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
+  logo: {
+    justifyContent: 'flex-start',
+    height: 24,
+    width: 24
+  }
 });

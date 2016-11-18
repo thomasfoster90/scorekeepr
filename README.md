@@ -31,8 +31,9 @@ As a person who likes to play games, I need to keep track of score for games or 
 
 
 ##wireframes##
+<a href="http://imgur.com/2uGM5qJ"><img src="http://i.imgur.com/2uGM5qJ.jpg" title="wireframe"</a>
 
-<a href="http://imgur.com/NgW3VAV"><img src="http://i.imgur.com/NgW3VAV.png" title="trello"</a>
+<a href="http://imgur.com/W36kDv8"><img src="http://i.imgur.com/W36kDv8.png" title="trello"</a>
 
 ###Rose###
 Our ability to work as a team.

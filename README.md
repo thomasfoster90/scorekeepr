@@ -35,8 +35,7 @@ As a person who likes to play games, I need to keep track of score for games or 
 
 <a href="http://imgur.com/2uGM5qJ"><img src="http://i.imgur.com/2uGM5qJ.jpg" title="wireframe"</a>
 
-<a href="http://imgur.com/PnP0GXL"><img src="
-http://i.imgur.com/PnP0GXL.jpg" title="spades-model"</a>
+<a href="http://imgur.com/PnP0GXL"><img src="http://i.imgur.com/PnP0GXL.jpg" title="spades-model"</a>
 
 <a href="http://imgur.com/W36kDv8"><img src="http://i.imgur.com/W36kDv8.png" title="trello"</a>
 

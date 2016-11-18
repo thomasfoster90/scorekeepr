@@ -10,18 +10,18 @@ There are many games that require tracking scores. Most of us keep track by writ
 
 
 ##Technologies Used##
-
-1.JSX
-2.css
-3.javascript
-4.React
-5.React-Native
-*Navigation*
-*picker*
+<ul>
+<li>JSX</li>
+<li>css</li>
+<li>javascript</li>
+<li>React
+<li>React-Native</li>
+</br> *Navigation* </br>
+*picker*</br>
 *models*
-6.XCODE
+<li>XCODE</li>
 
-
+</ul>
 
 
 ##User Stories##

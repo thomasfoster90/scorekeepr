@@ -52,6 +52,8 @@ class SpadesPlayer extends Component {
     } else {
       this._normalScore()
     }
+    this._checkWinner();
+
   }
 
 
@@ -107,11 +109,11 @@ class SpadesPlayer extends Component {
       // else p2 bid blind nil, so get p1's score
         else if (p2B === 'blindnil') {
           if (p1T >= p1B)  {
-          var amtToAdd = p1B;
+          var amtToAdd = +p1B;
           sandbags += (p1T-p1B)
 
         } else {
-           var amtToAdd = p1B*(-1);
+           var amtToAdd = +p1B*(-1);
          }
          // if p2 got blindnil
         if (p2T === 'blindnil') {
@@ -125,6 +127,7 @@ class SpadesPlayer extends Component {
     }
     total+=amtToAdd
     this.setState({ total, sandbags })
+
   }
 
   _nilScore() {
@@ -178,6 +181,16 @@ class SpadesPlayer extends Component {
     this._sandbagCheck()
   }
 
+  _checkWinner() {
+    console.log("checked for a winner");
+    let winner = this.props.winScore;
+    console.log("winner:", winner);
+    let theScore = (this.state.total)*10;
+    console.log("theScore:", theScore);
+    if (theScore >= winner){
+      alert("Winner!" )
+    }
+  }
   _sandbagCheck() {
     console.log('_sandbagCheck');
 
@@ -194,7 +207,7 @@ class SpadesPlayer extends Component {
           <View style={{flexDirection: 'row', justifyContent:'space-between'}}>
             <TextInput style={styles.teamNameInput} onChangeText={this._handleNameChange.bind(this)} placeholder="Team Name" />
             <View style={styles.total}>
-              <Text style={[styles.spadesText, {fontSize:18, paddingRight:10}]}>TOTAL: {this.state.total}{this.state.sandbags}</Text>
+              <Text onValueChange={this._checkWinner()} style={[styles.spadesText, {fontSize:18, paddingRight:10}]}>TOTAL: {this.state.total}{this.state.sandbags}</Text>
             </View>
           </View>
 
@@ -316,8 +329,6 @@ class SpadesPlayer extends Component {
 
 
             <View style={{alignItems:'flex-end'}}>
-              {/* <View style={{flex:4}}>
-              </View> */}
               <TouchableHighlight style={{flex:1}} onPress={this._resetButton.bind(this)}>
                 <Text style={[styles.spadesText, {padding:5}]}>RESET</Text>
               </TouchableHighlight>

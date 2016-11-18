@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   Text,
+  TextInput,
   Slider,
   PixelRatio,
   TouchableHighlight,
@@ -22,8 +23,8 @@ export default class SpadesContainer extends Component {
     super(props)
 
     this.state={
-      players:1,
-      modalVisible: false
+      modalVisible: false,
+      winner: 500
     }
   }
     static get defaultProps() {
@@ -44,11 +45,15 @@ export default class SpadesContainer extends Component {
         })
       }
 
+      _handleWinScore(winner) {
+      this.setState({winner})
+    }
+
       _populatePlayers() {
       var playerBlocks = [];
       for(var i=1;i<=2;i++){
         playerBlocks.push(
-          <SpadesPlayer key={i} playernumber={i}/>
+          <SpadesPlayer winScore={this.state.winner} key={i} playernumber={i}/>
         );
 
       }
@@ -60,15 +65,22 @@ export default class SpadesContainer extends Component {
     render(){
       return(
         <View  style={styles.container}>
+
           <View style={styles.topBar}>
             <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
               <Text style={styles.button}>HOME</Text>
             </TouchableHighlight>
-
           </View>
-              <ScrollView>
-              {this._populatePlayers()}
-              </ScrollView>
+
+          <ScrollView>
+          {this._populatePlayers()}
+          </ScrollView>
+
+          <View style={{flexDirection:'row', alignItems:'center'}}>
+            <Text style={styles.setWinnerText}>Set Winning Score: </Text>
+            <TextInput style={styles.winningScore} onChangeText={this._handleWinScore.bind(this)} placeholder=" Default: 500"/>
+          </View>
+
             <Modal
             animationType={"slide"}
             transparent={false}
@@ -165,5 +177,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     letterSpacing: 3
-  }
+  },
+  winningScore: {
+    width: 100,
+    height: 35,
+    borderColor: 'white',
+    borderWidth:1,
+    margin:10,
+    fontFamily:"Quicksand-Bold",
+    color:'white',
+    backgroundColor: '#54B2A9'
+  },
 });

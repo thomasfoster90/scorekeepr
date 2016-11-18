@@ -23,7 +23,6 @@ export default class PingPongPlayer extends Component {
 
 
   _resetButton(){
-    console.log('resetssss');
     this.props.onReset()
     this.setState({
       total: 0,
@@ -36,21 +35,17 @@ export default class PingPongPlayer extends Component {
     console.log('add');
     let newTotal = this.state.total + 1
     let winner = this.props.winScore
-    console.log(newTotal);
     this.setState({
       total: newTotal
     })
     if(newTotal === +winner){
-      alert('Winner')
+      alert('Winner!')
     }
   }
 
   _subtractOne(){
     console.log('subtract');
     let newTotal = this.state.total - 1
-    let winner = this.props.winScore
-    console.log(newTotal);
-    console.log(winner);
     if (this.state.total === 0) {
       alert('No Points to Subtract')
     } else {

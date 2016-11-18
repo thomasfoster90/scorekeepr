@@ -2,7 +2,6 @@
 ##Score Keepr##
 
 
-<!-- Problem -->
 
 
 <!-- Descriptions -->
@@ -20,6 +19,7 @@ There are many games that require tracking scores. Most of us keep track by writ
 *Navigation*
 *picker*
 *models*
+6.XCODE
 
 
 
@@ -34,18 +34,3 @@ As a person who likes to play games, I need to keep track of score for games or 
 <a href="http://imgur.com/2uGM5qJ"><img src="http://i.imgur.com/2uGM5qJ.jpg" title="wireframe"</a>
 
 <a href="http://imgur.com/W36kDv8"><img src="http://i.imgur.com/W36kDv8.png" title="trello"</a>
-
-###Rose###
-Our ability to work as a team.
-Our great communication skills
-The spades B/T functionality
-
-
-###Bud###
-Plan on saving the state of the game so you can leave and come back it your score
-
-adding more games
-
-###Thorn###
-That we dont know react redux right now.
-We dont have a synchronous state flow

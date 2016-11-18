@@ -13,16 +13,18 @@ import {
   Navigator
 } from 'react-native';
 
-import Game from './components/Game';
-import ScoreBoard from './components/ScoreBoard'
+import Home from './components/Home';
+import GenericContainer from './components/GenericContainer'
+import PingPongContainer from './components/PingPongContainer'
+import SpadesContainer from './components/SpadesContainer'
 
 export default class scorekeepr extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={{ title: 'Game',
+        initialRoute={{ title: 'Home',
                         index: 0 ,
-                        id: 'Game'
+                        id: 'Home'
                       }}
         renderScene={
           this.navigatorRenderScene
@@ -34,13 +36,22 @@ export default class scorekeepr extends Component {
   navigatorRenderScene(route,navigator){
     _navigator = navigator;
     switch(route.id){
-      case 'Game':
-        return(<Game navigator={navigator} title='First' />)
-      case 'ScoreBoard':
-        return(<ScoreBoard navigator={navigator} title='ScoreBoard' />)
+      case 'Home':
+        return(<Home navigator={navigator} title='Home' />)
+      case 'GenericContainer':
+        return(<GenericContainer navigator={navigator} title='GenericContainer'
+         />)
+         case 'PingPongContainer':
+           return(<PingPongContainer navigator={navigator} title='PingPongContainer'
+            />)
+            case 'SpadesContainer':
+              return(<SpadesContainer navigator={navigator} title='SpadesContainer'
+               />)
     }
   }
 }
 
 
+
+console.disableYellowBox = true;
 AppRegistry.registerComponent('scorekeepr', () => scorekeepr);

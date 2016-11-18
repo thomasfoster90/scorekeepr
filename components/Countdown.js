@@ -20,10 +20,8 @@ var CountDown = React.createClass({
       time: this.props.time ? this.props.time : 60,
       disabled: false
     };
-  },
-  // componentDidMount(){
-  //   this._countdown();
-  // },
+  }
+  
   render(){
     var style = [styles.text];
     var component;

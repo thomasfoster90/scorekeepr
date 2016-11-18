@@ -182,11 +182,8 @@ class SpadesPlayer extends Component {
   }
 
   _checkWinner() {
-    console.log("checked for a winner");
     let winner = this.props.winScore;
-    console.log("winner:", winner);
     let theScore = (this.state.total)*10;
-    console.log("theScore:", theScore);
     if (theScore >= winner){
       alert("Winner!" )
     }
@@ -224,16 +221,16 @@ class SpadesPlayer extends Component {
 
           </View>
           <View style={styles.playersSandbags}>
-            <View style={{flex:1, alignItems: 'center'}}>
+            <View style={styles.playerTags}>
               <Text style={styles.spadesText}>P1</Text>
             </View>
-            <View style={{flex:1, alignItems: 'center'}}>
+            <View style={styles.playerTags}>
               <Text style={styles.spadesText}>P2</Text>
             </View>
-            <View style={{flex:1, alignItems: 'center'}}>
+            <View style={styles.playerTags}>
               <Text style={styles.spadesText}>P1</Text>
             </View>
-            <View style={{flex:1, alignItems: 'center'}}>
+            <View style={styles.playerTags}>
               <Text style={styles.spadesText}>P2</Text>
             </View>
             <View style={{flex:2}}>
@@ -402,6 +399,10 @@ const styles = StyleSheet.create({
     fontFamily:"Quicksand-Bold",
     color:'white',
     backgroundColor: '#54B2A9'
+  },
+  playerTags: {
+    flex:1,
+    alignItems: 'center'
   }
 })
 

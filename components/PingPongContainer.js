@@ -24,7 +24,7 @@ export default class PingPongContainer extends Component {
 
     this.state={
       players:2,
-      winner: 0,
+      winner: 21,
       modalVisible: false
 
     }
@@ -86,7 +86,7 @@ export default class PingPongContainer extends Component {
 
           <View style={{flexDirection:'row', alignItems:'center'}}>
             <Text style={styles.setWinnerText}>Set Winning Score: </Text>
-            <TextInput style={styles.winningScore} onChangeText={this._handleNameChange.bind(this)}/>
+            <TextInput style={styles.winningScore} onChangeText={this._handleNameChange.bind(this)} placeholder=" Default: 21"/>
           </View>
 
           <Modal

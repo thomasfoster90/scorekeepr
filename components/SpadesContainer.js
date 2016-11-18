@@ -78,7 +78,7 @@ export default class SpadesContainer extends Component {
 
           <View style={{flexDirection:'row', alignItems:'center'}}>
             <Text style={styles.setWinnerText}>Set Winning Score: </Text>
-            <TextInput style={styles.winningScore} onChangeText={this._handleWinScore.bind(this)} placeholder=" Default: 500"/>
+            <TextInput style={styles.winningScore} onChangeText={this._handleWinScore.bind(this)} placeholder=" 500"/>
           </View>
 
             <Modal

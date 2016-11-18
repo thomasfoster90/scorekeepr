@@ -1,5 +1,5 @@
 <!-- Title -->
-Score Keepr
+##Score Keepr##
 
 
 <!-- Problem -->
@@ -25,7 +25,9 @@ There are many games that require tracking scores. Most of us keep track by writ
 
 
 ##user stories##
-As a user I want to be able to keep track of score for a game that doesn't have an easy method of doing so.
+As a Spades player, I don't want to have to look for pen and paper every time I want to play.
+
+As a person who likes to play games, I need to keep track of score for games or rounds where points increment by 1-5 (Ping Pong, Catch Phrase, Tabboo, Bags, Washers, Pool).
 
 
 ##wireframes##

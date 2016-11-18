@@ -191,4 +191,10 @@ const styles = StyleSheet.create({
     color:'white',
     backgroundColor: '#54B2A9'
   },
+  setWinnerText: {
+    color: 'white',
+    fontFamily: 'Quicksand-Bold',
+    fontSize:18,
+    borderRadius: 2
+  },
 });

@@ -49,17 +49,17 @@ export default class Home extends Component {
           </View>
 
           <View style={styles.thirdContainer}>
-            <TouchableHighlight onPress={this.onButtonPressSpades.bind(this)}>
+            <TouchableHighlight style={styles.menuButton} onPress={this.onButtonPressSpades.bind(this)}>
               <Text style={styles.titles}>SPADES</Text>
             </TouchableHighlight>
           </View>
           <View style={styles.fourthContainer}>
-            <TouchableHighlight onPress={this.onButtonPressPing.bind(this)}>
+            <TouchableHighlight style={styles.menuButton} onPress={this.onButtonPressPing.bind(this)}>
               <Text style={styles.titles}>PING PONG</Text>
             </TouchableHighlight>
           </View>
           <View style={styles.fifthContainer}>
-            <TouchableHighlight onPress={this.onButtonPress.bind(this)}>
+            <TouchableHighlight style={styles.menuButton} onPress={this.onButtonPress.bind(this)}>
               <Text style={styles.titles}>BASIC</Text>
             </TouchableHighlight>
           </View>
@@ -121,5 +121,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'white',
 
+  },
+  menuButton: {
+    
   }
 });
